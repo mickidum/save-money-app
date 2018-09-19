@@ -2,14 +2,14 @@ const mongoose 			= require('mongoose');
 const bcrypt 			= require('bcrypt');
 const bcrypt_p 			= require('bcrypt-promise');
 const jwt           	= require('jsonwebtoken');
-const Company           = require('./company.model');
+const Intent           = require('./intent.model');
 const validate          = require('mongoose-validator');
 const {TE, to}          = require('../services/util.service');
 const CONFIG            = require('../config/config');
 
 let UserSchema = mongoose.Schema({
-    first:      {type:String},
-    last:       {type:String},
+    name:      {type:String},
+    image:       {type:String},
     phone:	    {type:String, lowercase:true, trim: true, index: true, unique: true, sparse: true,//sparse is because now we have two possible unique keys that are optional
         validate:[validate({
             validator: 'isNumeric',
@@ -27,8 +27,8 @@ let UserSchema = mongoose.Schema({
 
 }, {timestamps: true});
 
-UserSchema.virtual('companies', {
-    ref: 'Company',
+UserSchema.virtual('intents', {
+    ref: 'Intent',
     localField: '_id',
     foreignField: 'users.user',
     justOne: false,
@@ -64,11 +64,11 @@ UserSchema.methods.comparePassword = async function(pw){
     return this;
 }
 
-UserSchema.methods.Companies = async function(){
-    let err, companies;
-    [err, companies] = await to(Company.find({'users.user':this._id}));
-    if(err) TE('err getting companies');
-    return companies;
+UserSchema.methods.Intents = async function(){
+    let err, intents;
+    [err, intents] = await to(Intent.find({'users.user':this._id}));
+    if(err) TE('err getting intents');
+    return intents;
 }
 
 UserSchema.virtual('full_name').set(function (name) {

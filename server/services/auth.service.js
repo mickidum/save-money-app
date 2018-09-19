@@ -1,4 +1,5 @@
 const { User } 	    = require('../models');
+const { Account } 	    = require('../models');
 const validator     = require('validator');
 const { to, TE }    = require('../services/util.service');
 
@@ -9,7 +10,8 @@ const getUniqueKeyFromBody = function(body){// this is so they can send in 3 opt
             unique_key = body.email
         }else if(typeof body.phone != 'undefined'){
             unique_key = body.phone
-        }else{
+        }
+        else{
             unique_key = null;
         }
     }
@@ -17,6 +19,20 @@ const getUniqueKeyFromBody = function(body){// this is so they can send in 3 opt
     return unique_key;
 }
 module.exports.getUniqueKeyFromBody = getUniqueKeyFromBody;
+
+const getUniqueKeyFromBodyAccount = function(body){
+    let unique_key = body.unique_key;
+    if(typeof unique_key==='undefined'){
+        if(typeof body.account_name != 'undefined'){
+            unique_key = body.account_name
+        }else{
+            unique_key = null;
+        }
+    }
+
+    return unique_key;
+}
+module.exports.getUniqueKeyFromBodyAccount = getUniqueKeyFromBodyAccount;
 
 const createUser = async function(userInfo){
     let unique_key, auth_info, err;
@@ -88,3 +104,25 @@ const authUser = async function(userInfo){//returns token
 
 }
 module.exports.authUser = authUser;
+
+const createAccount = async function(accountInfo){
+    let unique_key, auth_info, err;
+
+    auth_info={}
+    auth_info.status='create';
+
+    unique_key = getUniqueKeyFromBodyAccount(accountInfo);
+
+    if(!unique_key) TE('An email or phone number was not entered.');
+
+    if(unique_key){
+        auth_info.method = 'account_name';
+        accountInfo.account_name = unique_key;
+
+        [err, account] = await to(Account.create(accountInfo));
+        if(err) TE('account already exists with that account name');
+
+        return account;
+    }
+}
+module.exports.createAccount = createAccount;

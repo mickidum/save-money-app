@@ -1,21 +1,41 @@
-const Company 			    = require('../models/company.model');
+const Intent 			    = require('../models/intent.model');
+// const Account 			    = require('../models/account.model');
 const { to, ReE, ReS } = require('../services/util.service');
 
-let company = async function (req, res, next) {
-    let company_id, err, company;
-    company_id = req.params.company_id;
+let intent = async function (req, res, next) {
+    let intent_id, err, intent;
+    intent_id = req.params.intent_id;
 
-    [err, company] = await to(Company.findOne({_id:company_id}));
-    if(err) return ReE(res,"err finding company");
+    [err, intent] = await to(Intent.findOne({_id:intent_id}));
+    if(err) return ReE(res,"err finding intent");
 
-    if(!company) return ReE(res, "Company not found with id: "+company_id);
+    if(!intent) return ReE(res, "Intent not found with id: "+intent_id);
     let user, users_array;
     user = req.user;
-    users_array = company.users.map(obj=>String(obj.user));
+    users_array = intent.users.map(obj=>String(obj.user));
 
     if(!users_array.includes(String(user._id))) return ReE(res, "User does not have permission to read app with id: "+app_id);
 
-    req.company = company;
+    req.intent = intent;
     next();
 }
-module.exports.company = company;
+module.exports.intent = intent;
+
+let account = async function (req, res, next) {
+    let account_id, err, account;
+    account_id = req.params.account_id;
+
+    [err, account] = await to(Account.findOne({_id:account_id}));
+    if(err) return ReE(res,"err finding account");
+
+    if(!account) return ReE(res, "Account not found with id: "+account_id);
+    let user, users_array;
+    user = req.user;
+    users_array = account.users.map(obj=>String(obj.user));
+
+    if(!users_array.includes(String(user._id))) return ReE(res, "User does not have permission to read app with id: "+app_id);
+
+    req.account = account;
+    next();
+}
+module.exports.account = account;
