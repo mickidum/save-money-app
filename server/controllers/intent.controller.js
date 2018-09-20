@@ -40,7 +40,7 @@ module.exports.get = get;
 
 const update = async function(req, res){
     let err, intent, data;
-    intent = req.user;
+    intent = req.intent;
     data = req.body;
     intent.set(data);
 
@@ -48,7 +48,7 @@ const update = async function(req, res){
     if(err){
         return ReE(res, err);
     }
-    return ReS(res, {intent:intent.toWeb()});
+    return ReS(res, {message: `Intent: ${intent.name} - has been updated`});
 }
 module.exports.update = update;
 
@@ -59,6 +59,6 @@ const remove = async function(req, res){
     [err, intent] = await to(intent.remove());
     if(err) return ReE(res, 'error occured trying to delete the intent');
 
-    return ReS(res, {message:'Deleted Intent'}, 204);
+    return ReS(res, {message:`Intent: ${intent.name} - has been deleted`});
 }
 module.exports.remove = remove;

@@ -1,4 +1,4 @@
-const { User }      = require('../models');
+const { Intent }      = require('../models');
 const authService   = require('../services/auth.service');
 const { to, ReE, ReS }  = require('../services/util.service');
 
@@ -56,13 +56,32 @@ const update = async function(req, res){
 module.exports.update = update;
 
 const remove = async function(req, res){
-    let user, err;
+    let user, err, intents;
     user = req.user;
 
-    [err, user] = await to(user.destroy());
-    if(err) return ReE(res, 'error occured trying to delete user');
+    [err, intents] = await to(Intent.deleteMany({'users.user':user._id}, function (err) {
+        if (err) return res.status(500).send(err);
+    }));
 
-    return ReS(res, {message:'Deleted User'}, 204);
+    if(err) return ReE(res, 'error occured trying to delete intents');
+
+    // [err, user] = await to(User.findOneAndDelete(
+        // {_id : user._id},
+        // (err, user) => {
+        //     if (err) return res.status(500).send(err);
+            
+        //     const response = {
+        //         user: "User successfully deleted",
+        //         intents: "deleted all intents",
+        //         id: user._id
+        //     };
+        //     return res.status(200).send(response);
+        // }
+    // )); 
+    [err, intent] = await to(user.remove());
+    if(err) return ReE(res, 'error occured trying to delete user');
+    
+    return ReS(res, {message:`User: ${user.email} and all intents - have been deleted`});
 }
 module.exports.remove = remove;
 

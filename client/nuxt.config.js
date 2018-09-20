@@ -13,6 +13,30 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  modules: [
+    // 'bootstrap-vue/nuxt',
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
+  ],
+  router: {
+    middleware: ['auth']
+  },
+  axios: {
+    baseURL: 'http://127.0.0.1:3001/v1'
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'http://localhost:3001/v1/users/login', method: 'post', propertyName: 'token' },
+          logout: { url: '/', method: 'get' },
+          user: { url: 'http://localhost:3001/v1/users', method: 'get', propertyName: 'user' }
+        },
+        // tokenRequired: true,
+        tokenType: 'bearer',
+      }
+    }
+  },
   /*
   ** Customize the progress bar color
   */

@@ -7,9 +7,16 @@ const validate          = require('mongoose-validator');
 const {TE, to}          = require('../services/util.service');
 const CONFIG            = require('../config/config');
 
+// let SettingsSchema = mongoose.Schema({
+//     monthCost: {type: Number, required: true},
+//     lastWasted: {type: Number, default: 0},
+//     totalWasted: {type: Number, default: 0},
+//     totalSaved: {type: Number, default: 0}
+// });
+
 let UserSchema = mongoose.Schema({
     name:      {type:String},
-    image:       {type:String},
+    avatar:       {type:String},
     phone:	    {type:String, lowercase:true, trim: true, index: true, unique: true, sparse: true,//sparse is because now we have two possible unique keys that are optional
         validate:[validate({
             validator: 'isNumeric',
@@ -24,6 +31,12 @@ let UserSchema = mongoose.Schema({
             }),]
     },
     password:   {type:String},
+    settings: {
+    monthCost: {type: Number, required: true},
+    lastWasted: {type: Number, default: 0},
+    totalWasted: {type: Number, default: 0},
+    totalSaved: {type: Number, default: 0}
+},
 
 }, {timestamps: true});
 
