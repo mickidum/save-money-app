@@ -16,7 +16,7 @@ module.exports = {
   modules: [
     // 'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
   ],
   router: {
     middleware: ['auth']
@@ -33,10 +33,14 @@ module.exports = {
           user: { url: 'http://localhost:3001/v1/users', method: 'get', propertyName: 'user' }
         },
         // tokenRequired: true,
-        tokenType: 'bearer',
+        tokenType: 'bearer', 
       }
     }
   },
+  css: [
+    { src: '~/assets/css/main.scss', lang: 'scss' },
+    { src: 'font-awesome/scss/font-awesome.scss', lang: 'scss' }
+  ],
   /*
   ** Customize the progress bar color
   */
