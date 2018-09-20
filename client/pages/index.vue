@@ -3,10 +3,10 @@
     <div>
       <app-logo/>
       <h1 class="title">
-        {{ name }}
+        client
       </h1>
       <h2 class="subtitle">
-        {{ description }}
+        Nuxt.js project
       </h2>
       <div class="links">
         <a

@@ -1,6 +1,6 @@
-# {{ name }}
+# client
 
-> {{ description }}
+> Nuxt.js project
 
 ## Build Setup
 
