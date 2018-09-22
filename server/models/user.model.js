@@ -7,12 +7,6 @@ const validate          = require('mongoose-validator');
 const {TE, to}          = require('../services/util.service');
 const CONFIG            = require('../config/config');
 
-// let SettingsSchema = mongoose.Schema({
-//     monthCost: {type: Number, required: true},
-//     lastWasted: {type: Number, default: 0},
-//     totalWasted: {type: Number, default: 0},
-//     totalSaved: {type: Number, default: 0}
-// });
 
 let UserSchema = mongoose.Schema({
     name:      {type:String},
@@ -32,7 +26,16 @@ let UserSchema = mongoose.Schema({
     },
     password:   {type:String},
     settings: {
-    monthCost: {type: Number, required: true},
+    monthCost: {type: String, required: true,
+            validate:[validate({
+                validator: 'isInt',
+                allow_leading_zeroes: false,
+                arguments: [
+                    { gt: 0, max: 10000 }
+                ],
+                message: 'Not a valid month cost, sorry.',
+            }),]
+    },
     lastWasted: {type: Number, default: 0},
     totalWasted: {type: Number, default: 0},
     totalSaved: {type: Number, default: 0}
@@ -99,7 +102,7 @@ UserSchema.virtual('full_name').get(function () { //now you can treat as if this
 
 UserSchema.methods.getJWT = function(){
     let expiration_time = parseInt(CONFIG.jwt_expiration);
-    return "Bearer "+jwt.sign({user_id:this._id}, CONFIG.jwt_encryption, {expiresIn: expiration_time});
+    return jwt.sign({user_id:this._id}, CONFIG.jwt_encryption, {expiresIn: expiration_time});
 };
 
 UserSchema.methods.toWeb = function(){

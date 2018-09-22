@@ -14,7 +14,7 @@ module.exports = {
     ]
   },
   modules: [
-    // 'bootstrap-vue/nuxt',
+    'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
     '@nuxtjs/auth',
   ],
@@ -37,10 +37,6 @@ module.exports = {
       }
     }
   },
-  css: [
-    { src: '~/assets/css/main.scss', lang: 'scss' },
-    { src: 'font-awesome/scss/font-awesome.scss', lang: 'scss' }
-  ],
   /*
   ** Customize the progress bar color
   */

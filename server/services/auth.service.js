@@ -1,5 +1,4 @@
 const { User } 	    = require('../models');
-const { Account } 	    = require('../models');
 const validator     = require('validator');
 const { to, TE }    = require('../services/util.service');
 
@@ -21,20 +20,29 @@ const getUniqueKeyFromBody = function(body){// this is so they can send in 3 opt
 module.exports.getUniqueKeyFromBody = getUniqueKeyFromBody;
 
 const createUser = async function(userInfo){
-    let unique_key, auth_info, err;
-
+    let unique_key, auth_info, err, cost;
+    cost = userInfo.settings && userInfo.settings.monthCost;
     auth_info={}
     auth_info.status='create';
 
     unique_key = getUniqueKeyFromBody(userInfo);
     if(!unique_key) TE('An email or phone number was not entered.');
+    if(!cost) {
+        TE('A month cost field is required.');
+    }
+    else if(!validator.isInt(cost,{ allow_leading_zeroes: false, gt: 1, max: 10000 })){
+        TE('A month cost must be a number');
+    }
 
     if(validator.isEmail(unique_key)){
         auth_info.method = 'email';
         userInfo.email = unique_key;
 
         [err, user] = await to(User.create(userInfo));
-        if(err) TE('user already exists with that email');
+        if(err) {
+            // console.log(err)
+            TE('user already exists with that email')
+        };
 
         return user;
 
