@@ -10,7 +10,9 @@
         <h4 class=" text-center" slot="header">{{loggedInUser.first }} {{ loggedInUser.last}}</h4>
         <b-list-group flush>
             <b-list-group-item><strong>Email</strong> <span class="float-right">{{ loggedInUser.email }}</span></b-list-group-item>
-            <b-list-group-item><strong>Phone</strong> <span class="float-right">{{ loggedInUser.phone }}</span></b-list-group-item>
+            <!-- <b-list-group-item><strong>Phone</strong> <span class="float-right">{{ loggedInUser.phone }}</span></b-list-group-item> -->
+            <b-list-group-item><strong>Month Cost</strong> <span class="float-right">{{ loggedInUser.settings.monthCost }}</span></b-list-group-item>
+            <b-list-group-item><strong>Last Wasted</strong> <span class="float-right">{{ loggedInUser.settings.lastWasted }}</span></b-list-group-item>
             <b-list-group-item><strong>Account created at</strong> <span class="float-right">{{ prettyDate }}</span></b-list-group-item>
         </b-list-group>
         <b-card-body>

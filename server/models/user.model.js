@@ -7,6 +7,14 @@ const validate          = require('mongoose-validator');
 const {TE, to}          = require('../services/util.service');
 const CONFIG            = require('../config/config');
 
+const validateCost = [validate({
+    validator: 'isInt',
+    allow_leading_zeroes: false,
+    arguments: [
+        { min: 0, max: 10000 }
+    ],
+    message: 'Not a valid field format, sorry.',
+}),]
 
 let UserSchema = mongoose.Schema({
     name:      {type:String},
@@ -24,21 +32,24 @@ let UserSchema = mongoose.Schema({
                 message: 'Not a valid email.',
             }),]
     },
+    role: {
+        type: String, 
+        default: 'regular', 
+        lowercase:true, 
+        trim: true, 
+        enum: [
+            'regular',
+            'admin'
+        ]
+    },
     password:   {type:String},
     settings: {
     monthCost: {type: String, required: true,
-            validate:[validate({
-                validator: 'isInt',
-                allow_leading_zeroes: false,
-                arguments: [
-                    { gt: 0, max: 10000 }
-                ],
-                message: 'Not a valid month cost, sorry.',
-            }),]
+            validate: validateCost
     },
-    lastWasted: {type: Number, default: 0},
-    totalWasted: {type: Number, default: 0},
-    totalSaved: {type: Number, default: 0}
+    lastWasted: {type: String, default: '0', validate: validateCost},
+    totalWasted: {type: String, default: '0', validate: validateCost},
+    totalSaved: {type: String, default: '0', validate: validateCost}
 },
 
 }, {timestamps: true});

@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-      <nuxt-link tag="a" class="navbar-brand" to="/" exact>Deliveroo clone</nuxt-link>
+      <nuxt-link tag="a" class="navbar-brand" to="/" exact>Smoke and Save</nuxt-link>
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav">
           <li v-if="isAuthenticated">

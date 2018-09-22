@@ -1,4 +1,4 @@
-const { Intent }      = require('../models');
+const { Intent, User }      = require('../models');
 const authService   = require('../services/auth.service');
 const { to, ReE, ReS }  = require('../services/util.service');
 
@@ -20,6 +20,25 @@ const create = async function(req, res){
     }
 }
 module.exports.create = create;
+
+const getAll = async function(req, res){
+    res.setHeader('Content-Type', 'application/json');
+    let user = req.user;
+    if(user.role && user.role !== 'admin') {
+        return ReE(res, 'You are not allowed to view this!');
+    }
+    
+    [err, users] = await to(User.find());
+    let users_json = []
+    for (let i in users){
+        let user = users[i];
+        users_json.push(user.toWeb())
+    }
+    return ReS(res, {users: users_json});
+
+    // return ReS(res, {user:user.toWeb()});
+}
+module.exports.getAll = getAll;
 
 const get = async function(req, res){
     res.setHeader('Content-Type', 'application/json');
@@ -65,25 +84,36 @@ const remove = async function(req, res){
 
     if(err) return ReE(res, 'error occured trying to delete intents');
 
-    // [err, user] = await to(User.findOneAndDelete(
-        // {_id : user._id},
-        // (err, user) => {
-        //     if (err) return res.status(500).send(err);
-            
-        //     const response = {
-        //         user: "User successfully deleted",
-        //         intents: "deleted all intents",
-        //         id: user._id
-        //     };
-        //     return res.status(200).send(response);
-        // }
-    // )); 
     [err, intent] = await to(user.remove());
     if(err) return ReE(res, 'error occured trying to delete user');
     
     return ReS(res, {message:`User: ${user.email} and all intents - have been deleted`});
 }
 module.exports.remove = remove;
+
+const removeUser = async function(req, res){
+    let user, err, currentUser;
+    currentUser = req.currentUser;
+    user = req.user;
+    // console.log('Admin: ', user);
+    // console.log('Current User: ', currentUser)
+    if (user.role !== "admin") {
+        return ReE('You are not allowed to create an admin account.');
+    }
+
+    [err, intents] = await to(Intent.deleteMany({'users.user':currentUser._id}, function (err) {
+        if (err) return res.status(500).send(err);
+    }));
+
+    if(err) return ReE(res, 'error occured trying to delete intents');
+
+    [err, intent] = await to(currentUser.remove());
+    // [err, currentUser] = await console.log(currentUser);
+    if(err) return ReE(res, 'error occured trying to delete user');
+    
+    return ReS(res, {message:`User: ${currentUser.email} and all intents - have been deleted`});
+}
+module.exports.removeUser = removeUser;
 
 
 const login = async function(req, res){

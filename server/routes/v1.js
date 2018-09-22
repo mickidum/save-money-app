@@ -17,6 +17,10 @@ router.get('/', function(req, res, next) {
   res.json({status:"success", message:"Parcel Pending API", data:{"version_number":"v1.0.0"}})
 });
 
+// ADMIN ACTIONS
+router.get(     '/usersall',           passport.authenticate('jwt', {session:false}), UserController.getAll);        // R
+router.delete(  '/usersall/:user_id',  passport.authenticate('jwt', {session:false}), custom.currentUser, UserController.removeUser);     // D
+
 router.post(    '/users',           UserController.create);                                                    // C
 router.get(     '/users',           passport.authenticate('jwt', {session:false}), UserController.get);        // R
 router.put(     '/users',           passport.authenticate('jwt', {session:false}), UserController.update);     // U

@@ -19,19 +19,40 @@ const getUniqueKeyFromBody = function(body){// this is so they can send in 3 opt
 }
 module.exports.getUniqueKeyFromBody = getUniqueKeyFromBody;
 
+const checkAdmin = function(body){
+    let role;
+    role = body.role || 'regular';
+    if(role === 'admin') {
+        if(body.password && body.password !== 'adminpass') {
+            return false;
+        }else {
+            return true;
+        }
+    }
+}
+module.exports.checkAdmin = checkAdmin;
+
 const createUser = async function(userInfo){
-    let unique_key, auth_info, err, cost;
+    let unique_key, auth_info, err, cost, phone;
+    phone = userInfo.phone || '';
     cost = userInfo.settings && userInfo.settings.monthCost;
     auth_info={}
     auth_info.status='create';
-
     unique_key = getUniqueKeyFromBody(userInfo);
+
+    if(!checkAdmin(userInfo)) TE('You are not allowed to create an admin account.');
+
     if(!unique_key) TE('An email or phone number was not entered.');
+
+    if(phone && !validator.isMobilePhone(phone)) {
+        TE('A phone number is not valid.');
+    }
+
     if(!cost) {
         TE('A month cost field is required.');
     }
     else if(!validator.isInt(cost,{ allow_leading_zeroes: false, gt: 1, max: 10000 })){
-        TE('A month cost must be a number');
+        TE('A month cost has not valid format');
     }
 
     if(validator.isEmail(unique_key)){
@@ -41,6 +62,7 @@ const createUser = async function(userInfo){
         [err, user] = await to(User.create(userInfo));
         if(err) {
             // console.log(err)
+            // TE(err.message)
             TE('user already exists with that email')
         };
 
