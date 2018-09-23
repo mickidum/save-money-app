@@ -24,9 +24,7 @@ const checkAdmin = function(body){
     role = body.role || 'regular';
     if(role === 'admin') {
         if(body.password && body.password !== 'adminpass') {
-            return false;
-        }else {
-            return true;
+            TE('You are not allowed to create an admin account.')
         }
     }
 }
@@ -39,8 +37,7 @@ const createUser = async function(userInfo){
     auth_info={}
     auth_info.status='create';
     unique_key = getUniqueKeyFromBody(userInfo);
-
-    if(!checkAdmin(userInfo)) TE('You are not allowed to create an admin account.');
+    checkAdmin(userInfo);
 
     if(!unique_key) TE('An email or phone number was not entered.');
 

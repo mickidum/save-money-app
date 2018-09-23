@@ -4,22 +4,22 @@
       <b-alert show v-if="error" variant="danger">{{error}}</b-alert>
       <form autocomplete="off" @submit.stop.prevent="register">
         <div class="form-group">
-          <label for="username">First name</label>
+          <label for="username">Name</label>
           <b-form-input
             id="firstname"
             v-model="firstname"
             type="text"
             autofocus="true"
-            placeholder="Enter your first name"
+            placeholder="Enter your Name"
             />
         </div>
         <div class="form-group">
-          <label for="username">Last name</label>
+          <label for="monthcost">Month Cost</label>
           <b-form-input
-            id="lastname"
-            v-model="lastname"
-            type="text"
-            placeholder="Enter your last name"
+            id="monthcost"
+            v-model="monthcost"
+            type="number"
+            placeholder="Enter your Month Cost"
             />
         </div>
         <div class="form-group">
@@ -64,7 +64,7 @@ export default {
       email: '',
       password: '',
       firstname: '',
-      lastname: '',
+      monthcost: '',
       loading: false,
       error: null
     }
@@ -75,8 +75,10 @@ export default {
           await this.$axios.post('/users', {
             email: this.email,
             password: this.password,
-            first: this.firstname,
-            last: this.lastname
+            name: this.firstname || 'john doe',
+            settings: {
+              monthCost: this.monthcost
+            }
           })
           await this.$auth.loginWith('local', {
             data: {
