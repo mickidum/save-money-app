@@ -1,8 +1,8 @@
 <template>
   <div class="all cont">
     <Header/>
-    <nuxt/>
-    <!-- <Footer/> -->
+    <!-- <nuxt/> -->
+    <Footer/>
   </div>
 </template>
 
