@@ -1,0 +1,114 @@
+.all {
+	position: relative;
+	min-height: 100vh;
+	background-color: #f9f9f9;
+}
+
+.cont {
+	position: relative;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.top-bar {
+	position: relative;
+	padding: 2px 3px 3px 3px;
+	border-bottom: solid 1px silver;
+	// background-color: #fff;
+	color: silver;
+	a {
+		text-decoration: none;
+		display: inline-block;
+		line-height: 1;
+	}
+}
+
+.top-line {
+	position: relative;
+	text-align: center;
+	background-color: #000;
+	padding: 2px 0 4px;
+		.logo {
+		font-weight: bold;
+		text-transform: uppercase;
+		color: #fff;
+		font-size: 12px;
+		vertical-align: middle;
+	}
+}
+
+.icon {
+	display: inline-block;
+	vertical-align: top;
+	color: #000;
+	svg {
+		width: 40px;
+		fill: #fff;
+		stroke: #000;
+		stroke-width: 10;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	span {
+		display: inline-block;
+	}
+}
+
+.right-side {
+	position: relative;
+	text-align: right;
+}
+
+.cost {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	line-height: 1;
+	text-align: center;
+	padding: 0 5px;
+	text-align: center;
+	.ttl {
+		font-size: 9px;
+		color: #000;
+		font-weight: bold;
+	}
+	.content {
+		color: gray;
+		svg, span {
+			display: inline-block;
+			vertical-align: text-bottom;
+		}
+		svg {
+			width: 20px;
+			fill: currentColor;
+		}
+		span {
+			font-size: 20px;
+			font-weight: bold;
+			line-height: 17px;
+		}
+	}
+	&.month-wasted {
+		.content {
+			color: red;
+			svg {
+				fill: white;
+		    width: 20px;
+		    stroke: red;
+		    stroke-width: 10;
+			}
+		}
+	}
+	&.month-saved {
+		.content {
+			color: green;
+			svg {
+				fill: white;
+		    width: 20px;
+		    stroke: green;
+		    stroke-width: 10;
+			}
+		}
+	}
+}
+

@@ -7,7 +7,7 @@
             img-src="https://placekitten.com/380/200"
             img-alt="Image"
             img-top>
-        <h4 class="" slot="header">{{loggedInUser.name }}</h4>
+        <h4 class="" slot="header">{{loggedInUser.name || 'John Doe' }}</h4>
         <b-list-group flush>
             <b-list-group-item><strong>Email</strong> <span class="float-right">{{ loggedInUser.email }}</span></b-list-group-item>
             <!-- <b-list-group-item><strong>Phone</strong> <span class="float-right">{{ loggedInUser.phone }}</span></b-list-group-item> -->
