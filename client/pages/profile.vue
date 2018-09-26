@@ -1,5 +1,5 @@
 <template>
-  <section class="container">
+  <section class="containera">
     <div class="mt-3 mb-3"><h1>Profile Page</h1></div>
   <div>
     <b-card no-body

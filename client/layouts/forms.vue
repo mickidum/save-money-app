@@ -1,7 +1,7 @@
 <template>
   <div class="all cont">
     <Header/>
-    <div class="content-wrapper">
+    <div class="content-wrapper-forms">
     	<nuxt/>
     </div>
     <Footer/>

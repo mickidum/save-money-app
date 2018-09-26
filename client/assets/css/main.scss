@@ -1,20 +1,136 @@
-.all {
-	position: relative;
-	min-height: 100vh;
-	background-color: #f9f9f9;
+html, button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+    /* Set your content font stack here: */
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif;
+}
+*, :after, :before {
+	box-sizing: border-box;
+}
+* {
+    -webkit-font-smoothing: antialiased;
+}
+a {
+	color: #0078e7;
 }
 
-.cont {
+.button-xsmall {
+            font-size: 70%;
+        }
+
+        .button-small {
+            font-size: 85%;
+        }
+
+        .button-large {
+            font-size: 110%;
+        }
+
+        .button-xlarge {
+            font-size: 125%;
+        }
+
+.text-center {
+	text-align: center;
+}
+
+html, body {
+	// background-color: #fdfdfd;
+	background-color: #f9f7f7;
+	* {
+		user-select: none;
+	}
+}
+
+.button-success,
+.button-error,
+.button-warning,
+.button-secondary,
+.button-primary
+ {
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+.button-success {
+  background: rgb(28, 184, 65); /* this is a green */
+}
+
+.button-error {
+  background: rgb(202, 60, 60); /* this is a maroon */
+}
+
+.button-warning {
+  background: rgb(223, 117, 20); /* this is an orange */
+}
+
+.button-secondary {
+  background: rgb(66, 184, 221); /* this is a light blue */
+}
+
+.pure-form-message {
+	color: red;
+	border: solid 1px red;
+	padding: 5px;
+	border-radius: 4px;
+}
+
+.forms {
 	position: relative;
+  max-width: 380px;
+  padding: 0 20px;
+  margin: auto;
+  input {
+  	display: block;
+  	width: 100%;
+  	margin-bottom: 20px;
+  }
+  .submit-button {
+  	display: block;
+  	width: 100%;
+  }
+}
+
+.all {
+	position: relative;
+	background-color: #fff;
+	min-height: 100vh;
+	overflow: hidden;
 	max-width: 1000px;
 	margin: 0 auto;
 }
 
+.content-wrapper {
+	margin: 45px 0 60px;
+	padding: 0 20px;
+	z-index: 0;
+	overflow-y: auto;
+}
+
+.content-wrapper-forms {
+	// margin: 40px 0 60px;
+	padding: 0 20px;
+	z-index: 0;
+	overflow-y: auto;
+}
+
+.top-fix-wrapper {
+	position: fixed;
+	z-index: 10;
+	width: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
 .top-bar {
 	position: relative;
+	max-width: 1000px;
+	margin: 0 auto;
 	padding: 2px 3px 3px 3px;
-	border-bottom: solid 1px silver;
-	// background-color: #fff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+	background-color: #f9f9f9;
 	color: silver;
 	a {
 		text-decoration: none;
@@ -24,39 +140,48 @@
 }
 
 footer.bottom-bar {
-	position: absolute;
+	position: fixed;
 	width: 100%;
 	left: 0;
+	right: 0;
 	bottom: 0;
-	text-align: left;
+	text-align: right;
 	.footer-wrapper {
+		box-shadow: 0 -1px 3px rgba(0, 0, 0, .2);
+		background-color: #f9f9f9;
+		z-index: 10;
+		max-width: 1000px;
+		margin: 0 auto;
 		position: relative;
-		padding: 5px 5px 10px 5px;
-		display: inline-block;
-		border-top: solid 1px silver;
-		border-right: solid 1px silver;
+		padding: 5px 5px 12px 5px;
 	}
-	.waste-button {
-		position: absolute;
-    right: 10px;
-    bottom: 10px;
-    width: 100px;
-    height: 100px;
-    border-radius: 100px;
-    background-color: red;
-    text-align: center;
-    line-height: 98px;
-    border: solid 1px white;
-    .waste-button-link {
-    	display: inline-block;
-    	text-decoration: none;
-    	color: white;
-    	font-size: 22px;
-    	font-weight: bold;
-    }
-	}
+
 }
 
+.waste-button {
+	position: absolute;
+	z-index: 15;
+  right: 14px;
+  bottom: 68px;
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  background-color: red;
+  text-align: center;
+  line-height: 100px;
+  border: solid 1px red;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	display: block;
+	text-decoration: none !important;
+	color: white !important;
+	font-size: 22px;
+	font-weight: bold;
+	cursor: pointer;
+	&:active {
+		box-shadow: none;
+		border-color: silver;
+	}
+}
 
 .top-line {
 	position: relative;
@@ -87,6 +212,14 @@ footer.bottom-bar {
 	}
 	span {
 		display: inline-block;
+	}
+	&.home {
+		position: absolute;
+		left: 5px;
+		top: 9px;
+		svg {
+			width: 35px;
+		}
 	}
 }
 
@@ -119,9 +252,9 @@ footer.bottom-bar {
 			fill: currentColor;
 		}
 		span {
-			font-size: 20px;
+			font-size: 22px;
 			font-weight: bold;
-			line-height: 17px;
+			line-height: 22px;
 		}
 	}
 	&.month-wasted {
@@ -155,6 +288,30 @@ footer.bottom-bar {
 		    stroke: orange;
 		    stroke-width: 10;
 			}
+		}
+	}
+}
+.b-change {
+	position: relative;
+	width: 100%;
+	span, button {
+		display: inline-block;
+		vertical-align: middle;
+		line-height: 1;
+	}
+	button {
+		margin-left: 10px;
+	}
+}
+
+.settings {
+	p {
+		position: relative;
+		.update-button {
+			position: absolute;
+			right: 0;
+			top: 0;
+			line-height: 1;
 		}
 	}
 }

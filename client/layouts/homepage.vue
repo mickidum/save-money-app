@@ -4,7 +4,7 @@
     <div class="content-wrapper">
     	<nuxt/>
     </div>
-    <Footer/>
+    <Footer showbutton="true"/>
   </div>
 </template>
 

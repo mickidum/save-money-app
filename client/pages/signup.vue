@@ -1,6 +1,6 @@
 <template>
   <section class="container">
-    <div class="col-md-6 offset-md-3 mt-3">
+    <!-- <div class="col-md-6 offset-md-3 mt-3">
       <b-alert show v-if="error" variant="danger">{{error}}</b-alert>
       <form autocomplete="off" @submit.stop.prevent="register">
         <div class="form-group">
@@ -51,12 +51,45 @@
           </router-link>
         </p>
       </form>
+    </div> -->
+
+    <div class="forms">
+      <h1 class="text-center">Smoke and Save</h1>
+      <form autocomplete="off" @submit.stop.prevent="register" class="pure-form pure-form-stacked">
+        <fieldset>
+          <span v-if="error" class="pure-form-message">Error message: {{error}}</span>
+          <p>
+            <label for="email">Email</label>
+            <input v-model="email" id="email" type="email" placeholder="Enter your email" autofocus>
+          </p>
+          <p>
+            <label for="password">Password</label>
+            <input v-model="password" id="password" type="password" placeholder="Enter your password">
+          </p>
+          <p>
+            <label for="firstname">Name</label>
+            <input v-model="firstname" id="firstname" type="text" placeholder="Enter your Name">
+          </p>
+          <p>
+            <label for="firstname">Month Cost</label>
+            <input v-model="monthcost" id="monthcost" type="number" placeholder="Enter your Month Cost">
+          </p>
+          <p>
+            <button :disabled="loading" type="submit" class="submit-button pure-button pure-button-primary button-primary">Submit</button>
+          </p>
+          <p class="text-center">
+          Already have an account?
+          <nuxt-link tag="a" class="text-center" to="/login" exact>Login</nuxt-link>
+        </p>
+        </fieldset>
+      </form>
     </div>
   </section>
 </template>
 
 <script>
 export default {
+  layout: 'forms',
   auth: false,
   middleware: 'guest',
   data() {
