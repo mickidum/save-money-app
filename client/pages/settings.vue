@@ -6,23 +6,23 @@
       <form autocomplete="off" @submit.stop.prevent="update" class="pure-form pure-form-stacked">
         <fieldset>
           <span v-if="error" class="pure-form-message">Error message: {{error}}</span>
-          <!-- <div class="b-change"><span>Email: {{user.email}}</span> <button @click.stop.prevent="changebutton" class="pure-button pure-button-primary button-xsmall">Change</button></div> -->
+          <span v-if="message" class="pure-form-message" style="color: green;border-color:green;">{{message}}</span>
           <p>
             <label for="email">Email</label>
-            <button @click.stop.prevent="changebutton" class="update-button pure-button pure-button-primary button-xsmall">{{button}}</button>
-            <input :disabled="changebutton"  v-model="email" value="user.email" id="email" type="email" placeholder="Enter your email">
+            <input  v-model="email" value="user.email" id="email" type="email" placeholder="Enter your email">
           </p>
           <p>
+            <button @click.stop.prevent="changebutton" class="update-button pure-button pure-button-primary button-xsmall">{{ button }}</button>
             <label for="password">Password</label>
-            <input :disabled="changebutton" v-model="password" id="password" type="password" placeholder="Enter new password">
+            <input :disabled="passnew" v-model="password" id="password" type="password" placeholder="Enter new password">
           </p>
           <p>
             <label for="firstname">Name</label>
-            <input :disabled="changebutton" v-model="firstname" id="firstname" type="text" placeholder="Enter your Name">
+            <input v-model="firstname" id="firstname" type="text" placeholder="Enter your Name">
           </p>
           <p>
             <label for="firstname">Month Cost</label>
-            <input :disabled="changebutton" v-model="monthcost" id="monthcost" type="number" placeholder="Enter your Month Cost">
+            <input v-model="monthcost" id="monthcost" type="number" placeholder="Enter your Month Cost">
           </p>
           <p>
             <button :disabled="loading" type="submit" class="submit-button pure-button pure-button-primary button-primary">Update</button>
@@ -39,9 +39,6 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
-  // layout: 'forms',
-  // auth: false,
-  // middleware: 'guest',
   data() {
     return {
       email: '',
@@ -50,6 +47,8 @@ export default {
       monthcost: '',
       loading: false,
       error: null,
+      passnew: true,
+      message: null,
       button: 'Change'
     }
   },
@@ -65,23 +64,49 @@ export default {
     this.monthcost = this.user.settings.monthCost;
   },
   methods: {
-    changebutton() {
-      this.button = 'Update';
-      console.log(e)
+    changebutton(e) {
+    if (this.passnew) {
+      this.button = 'Cancel'
+    }else {
+      this.button = 'Change';
+    }
+      return this.passnew = !this.passnew;
     },
     async update() {
-        try {
-          await this.$axios.put('/users', {
+        if (this.password) {
+          var obj = {
             email: this.email,
             password: this.password,
             name: this.firstname || 'john doe',
             settings: {
               monthCost: this.monthcost
             }
+          }
+        }else {
+          var obj = {
+            email: this.email,
+            name: this.firstname || 'john doe',
+            settings: {
+              monthCost: this.monthcost
+            }
+          }
+        }
+        try {
+          await this.$axios.put('/users', obj).then((res) => {
+            if (!res.data.success) {
+              this.message = null;
+              this.error = res.data.error;
+            }else {
+              this.passnew = true;
+              this.password = '';
+              this.error = null;
+              this.message = res.data.message;
+            }
           })
-          this.$router.push('/');
+          // this.$router.push('/');
         } catch (e) {
           this.error = e.response.data.error
+          console.log(e)
         }
       }
     }

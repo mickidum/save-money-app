@@ -54,6 +54,12 @@ const update = async function(req, res){
     data = req.body;
     user.set(data);
 
+    // if(!user.settings.monthCost && !user.email && !user.phone){
+    //     return ReE(res, 'Please enter an email or phone number to register.');
+    // } else if(!user.password){
+    //     return ReE(res, 'Please enter a password to register.');
+    // }
+
     [err, user] = await to(user.save());
     if(err){
         console.log(err, user);

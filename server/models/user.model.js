@@ -45,7 +45,12 @@ let UserSchema = mongoose.Schema({
             'admin'
         ]
     },
-    password:   {type:String},
+    password:   {
+        type: String,
+        trim: true,
+        required: true,
+        minlength: 6
+    },
     settings: {
         monthCost: {type: String, required: true, validate: validateCost},
         lastWasted: {type: String, default: '0', validate: validateCost},
