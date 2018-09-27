@@ -32,8 +32,8 @@
         </p>
         </fieldset>
       </form>
-      <p>
-        <nuxt-link tag="a" class="text-center" to="/" exact>Logout</nuxt-link>
+      <p v-if="logged">
+        <button @click="logoutHandler" class="text-center pure-button">Logout</button>
       </p>
     </div>
   </div>
@@ -127,17 +127,17 @@ export default {
           this.loading = false;
           this.error = e.response.data.error;
         }
+      },
+      async logoutHandler() {
+        try {
+          this.loading = true
+          await this.$auth.logout();
+          this.$router.push('/login')
+        } catch (err) {
+          this.loading = false
+          alert(err.message || 'An error occurred.')
+        }
       }
-    },
-    async logoutHandler() {
-      try {
-        this.loading = true
-        await this.$auth.logout();
-        this.$router.push('/login')
-      } catch (err) {
-        this.loading = false
-        alert(err.message || 'An error occurred.')
-      }
-    }
+    } 
 }
 </script>

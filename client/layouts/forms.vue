@@ -4,7 +4,7 @@
     <div class="content-wrapper-forms">
     	<nuxt/>
     </div>
-    <Footer/>
+    <!-- <Footer/> -->
   </div>
 </template>
 
