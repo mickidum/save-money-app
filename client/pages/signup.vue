@@ -52,6 +52,7 @@ export default {
   methods: {
     async register() {
         try {
+          this.loading = true;
           await this.$axios.post('/users', {
             email: this.email,
             password: this.password,
@@ -66,8 +67,10 @@ export default {
               password: this.password
             },
           })
+          this.loading = false;
           this.$router.push('/');
         } catch (e) {
+          this.loading = false;
           this.error = e.response.data.error
         }
       }
