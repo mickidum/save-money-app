@@ -1,18 +1,18 @@
 <template>
   <div class="settings-page">
-    
+    <nuxt-link tag="span" class="close-button" to="/" exact></nuxt-link>
     <div class="forms settings">
       <h1>All Settings</h1>
       <form autocomplete="off" @submit.stop.prevent="update" class="pure-form pure-form-stacked">
         <fieldset>
           <span v-if="error" class="pure-form-message">Error message: {{error}}</span>
-          <span v-if="message" class="pure-form-message" style="color: green;border-color:green;">{{message}}</span>
+          <span v-if="message" class="success-message">{{message}}</span>
           <p>
             <label for="email">Email</label>
             <input  v-model="email" value="user.email" id="email" type="email" placeholder="Enter your email">
           </p>
           <p>
-            <button @click.stop.prevent="changebutton" class="update-button pure-button pure-button-primary button-xsmall">{{ button }}</button>
+            <span @click.stop.prevent="changebutton" class="update-button pure-button pure-button-primary button-xsmall">{{ button }}</span>
             <label for="password">Password</label>
             <input :disabled="passnew" v-model="password" id="password" type="password" placeholder="Enter new password">
           </p>
@@ -39,6 +39,7 @@
 <script>
 import { mapGetters } from 'vuex';
 export default {
+  layout: 'forms',
   data() {
     return {
       email: '',
@@ -65,6 +66,7 @@ export default {
   },
   methods: {
     changebutton(e) {
+      this.password = '';
     if (this.passnew) {
       this.button = 'Cancel'
     }else {
@@ -73,6 +75,9 @@ export default {
       return this.passnew = !this.passnew;
     },
     async update() {
+
+        this.passnew = false;
+        this.button = 'Change';
         if (this.password) {
           var obj = {
             email: this.email,
@@ -92,21 +97,32 @@ export default {
           }
         }
         try {
+          this.loading = true;
           await this.$axios.put('/users', obj).then((res) => {
             if (!res.data.success) {
               this.message = null;
               this.error = res.data.error;
             }else {
               this.passnew = true;
-              this.password = '';
               this.error = null;
               this.message = res.data.message;
+              if (this.password || this.email !== this.user.email) {
+                setTimeout(() => {
+                  this.message = 'Redirecting to login';
+                }, 1000);
+                setTimeout(() => {
+                  this.$auth.logout();
+                }, 2000);
+              }
+              else {
+                this.$auth.fetchUser();
+              }
             }
           })
-          // this.$router.push('/');
+          this.loading = false;
         } catch (e) {
-          this.error = e.response.data.error
-          console.log(e)
+          this.loading = false;
+          this.error = e.response.data.error;
         }
       }
     }

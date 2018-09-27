@@ -17,6 +17,15 @@ const validateCost = [validate({
     message: 'Not a valid field format, sorry.',
 }),]
 
+const validateMonthCost = [validate({
+    validator: 'isInt',
+    allow_leading_zeroes: false,
+    arguments: [
+        { min: 10, max: 10000 }
+    ],
+    message: 'Not a valid field format, sorry.',
+}),]
+
 let MonthWasted = mongoose.Schema({ month: String, how: Number});
 
 let UserSchema = mongoose.Schema({
@@ -52,7 +61,7 @@ let UserSchema = mongoose.Schema({
         minlength: 6
     },
     settings: {
-        monthCost: {type: String, required: true, validate: validateCost},
+        monthCost: {type: String, required: true, validate: validateMonthCost},
         lastWasted: {type: String, default: '0', validate: validateCost},
         totalWasted: {type: String, default: '0', validate: validateCost},
         totalSaved: {type: String, default: '0', validate: validateCost},
@@ -89,6 +98,7 @@ UserSchema.pre('save', async function(next){
         return next();
     }
 })
+
 
 UserSchema.methods.comparePassword = async function(pw){
     let err, pass;

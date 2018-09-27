@@ -71,11 +71,16 @@ html, body {
 
 .pure-form-message {
 	color: red;
-	border: solid 1px red;
-	padding: 5px;
-	border-radius: 4px;
+	border-left: solid 2px red;
+	padding-left: 10px;
+	// border-radius: 4px;
 }
+.success-message {
+	padding-left: 10px;
+	color: #13e213;
+	border-left: solid 2px #13e213;
 
+}
 .forms {
 	position: relative;
   max-width: 380px;
@@ -309,10 +314,34 @@ footer.bottom-bar {
 		position: relative;
 		.update-button {
 			position: absolute;
+			display: inline-block;
 			right: 0;
 			top: 0;
 			line-height: 1;
 		}
+	}
+}
+
+.close-button {
+	position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+	&::before, &::after {
+	  content: '';
+	  position: absolute;
+	  width: 100%;
+	  top: 50%;
+	  height: 1px;
+	  background: #888;
+	  -webkit-transform: rotate(45deg);
+	  -moz-transform: rotate(45deg);
+	  transform: rotate(45deg);
+	}
+	&::after {
+		transform: rotate(-45deg);
 	}
 }
 

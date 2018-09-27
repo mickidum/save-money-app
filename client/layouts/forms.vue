@@ -1,10 +1,10 @@
 <template>
   <div class="all cont">
-    <Header/>
+    <!-- <Header/> -->
     <div class="content-wrapper-forms">
     	<nuxt/>
     </div>
-    <Footer/>
+    <!-- <Footer/> -->
   </div>
 </template>
 
