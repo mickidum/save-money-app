@@ -58,7 +58,10 @@ export default {
     let daysFromCreated = updatedUser.diff(createdUser, 'days');
     let dayCost = this.user.monthCost / 30;
     if (daysFromCreated > 0) {
-      this.totalSaved = (dayCost * daysFromCreated).toFixed() - this.user.totalWasted;
+			this.totalSaved = (dayCost * daysFromCreated).toFixed() - this.user.totalWasted;
+			if (this.totalSaved < 0) {
+				this.totalSaved = 0;
+			}
     }else {
       this.totalSaved = 0
     }
