@@ -21,7 +21,9 @@ export const getters = {
 
 export const mutations = {
 	add(state, waste) {
-		console.log(moment().format());
-		state.auth.user.settings.lastWasted = parseInt(state.auth.user.settings.lastWasted) + waste;
+		state.auth.user.settings = {
+      ...state.auth.user.settings,
+      ...waste
+    }
 	}
 }

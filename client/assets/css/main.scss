@@ -105,7 +105,7 @@ html, body {
 	background-color: #fff;
 	min-height: 100vh;
 	overflow: hidden;
-	max-width: 1000px;
+	max-width: 600px;
 	margin: 0 auto;
 }
 
@@ -132,7 +132,7 @@ html, body {
 
 .top-bar {
 	position: relative;
-	max-width: 1000px;
+	max-width: 600px;
 	margin: 0 auto;
 	padding: 2px 3px 6px 3px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
@@ -156,7 +156,7 @@ footer.bottom-bar {
 		box-shadow: 0 -1px 3px rgba(0, 0, 0, .2);
 		background-color: #f9f9f9;
 		z-index: 10;
-		max-width: 1000px;
+		max-width: 600px;
 		margin: 0 auto;
 		position: relative;
 		padding: 5px 5px 15px 5px;
@@ -251,7 +251,7 @@ footer.bottom-bar {
 		color: gray;
 		svg, span {
 			display: inline-block;
-			vertical-align: text-bottom;
+			vertical-align: top;
 		}
 		svg {
 			width: 20px;
@@ -344,6 +344,43 @@ footer.bottom-bar {
 	}
 	&::after {
 		transform: rotate(-45deg);
+	}
+}
+
+.waste-page {
+	position: relative;
+	min-height: 100vh;
+	// display: flex;
+  // justify-content: center;
+	// align-items: center;
+	padding-top: 140px;
+	form {
+		text-align: center;
+	}
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button { 
+		-webkit-appearance: none; 
+		margin: 0; 
+	}
+	.waste-error {
+		display: inline-block;
+		margin-bottom: 10px;
+	}
+	.waste-input {
+		height: 340px;
+    border-radius: 50%;
+    width: 340px;
+    display: inline-block;
+    text-align: center;
+    font-size: 120px;
+    border: 20px solid black;
+    line-height: 1;
+	}
+	.waste-button {
+		top: 20px;
+		left: 0;
+		right: auto;
+		bottom: auto;
 	}
 }
 

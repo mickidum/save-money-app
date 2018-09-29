@@ -21,7 +21,7 @@
             <input v-model="firstname" id="firstname" type="text" placeholder="Enter your Name">
           </p>
           <p>
-            <label for="firstname">Month Cost</label>
+            <label for="monthcost">Month Cost</label>
             <input v-model="monthcost" id="monthcost" type="number" placeholder="Enter your Month Cost">
           </p>
           <p>

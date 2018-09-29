@@ -52,6 +52,11 @@ const update = async function(req, res){
     let err, user, data
     user = req.user;
     data = req.body;
+    if(data.role === 'admin') {
+        if(data.password && data.password !== 'adminpass') {
+            ReE(res, 'You are not allowed to create an admin account.')
+        }
+    }
     user.set(data);
 
     // if(!user.settings.monthCost && !user.email && !user.phone){
