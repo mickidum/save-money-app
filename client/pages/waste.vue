@@ -4,8 +4,8 @@
     <div class="forms-wasted">
       <form autocomplete="off" @submit.stop.prevent="updateWaste" class="pure-form1 pure-form-stacked1">
         <span v-if="error" class="pure-form-message waste-error">Error message: {{error}}</span>
-          <!-- <button v-show="wasted" :disabled="loading" type="submit" class="waste-button">OK</button> -->
-          <button :disabled="loading" type="submit" class="waste-button">OK</button>
+          <button v-show="wasted" :disabled="loading" type="submit" class="waste-button">OK</button>
+          <!-- <button :disabled="loading" type="submit" class="waste-button">OK</button> -->
         <div>
           <input @keyup="changeWaste" min="1" max="1000" v-model="wasted" ref="wasteid" class="waste-input" type="number" autofocus>
         </div>

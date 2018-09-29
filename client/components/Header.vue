@@ -62,6 +62,9 @@ export default {
     let dayCost = this.user.monthCost / 30;
     if (today >= daysFromCreated) {
       this.monthSaved = (dayCost * daysFromCreated - this.user.lastMonthWasted.how).toFixed();
+      if (this.monthSaved < 0) {
+        this.monthSaved = 0;
+      }
     }else {
       this.monthSaved = (dayCost * today - this.user.lastMonthWasted.how).toFixed();
     }
