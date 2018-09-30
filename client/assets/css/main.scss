@@ -414,3 +414,30 @@ footer.bottom-bar {
     width: 100%;
 	}
 }
+
+.intents-container {
+	position: relative;
+	height: 100vh;
+	max-height: 50vh;
+	border: solid 1px silver;
+	// padding: 0 10px;
+	overflow-y: auto;
+	.intent {
+		position: relative;
+		border: solid 1px;
+		padding: 5px;
+		margin-bottom: 10px;
+		span {
+			display: inline-block;
+			vertical-align: middle;
+			&:last-child {
+				float: right;
+			}
+		}
+	}
+}
+
+h2 {
+	line-height: 1;
+  margin: 0 0 10px;
+}

@@ -1,10 +1,19 @@
 // export const actions = {
 //   nuxtServerInit({ commit }, { req }) {
-//     let wasteState = (this.$auth.user && this.$auth.user.settings) || null;
-//     commit('wasted/setWastedSettings', wasteState);
+//     let user = null
+//     let card = []
+//     if (req && req.headers && req.headers.cookie) {
+//       const parsed = cookieparser.parse(req.headers.cookie)
+//       user = (parsed.user && JSON.parse(parsed.user)) || null
+//       card = (parsed.card && JSON.parse(parsed.card)) || []
+//     }
+
+//     commit('auth/setUser', user)
+//     commit('card/setItems', card)
 //   }
 // }
-import moment from 'moment';
+
+
 export const getters = {
   isAuthenticated(state) {
     return state.auth.loggedIn

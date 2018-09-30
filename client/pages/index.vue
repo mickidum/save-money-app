@@ -1,7 +1,14 @@
 <template>
   <section>
-    <div>
-      <h1>Home page</h1>
+    <h2>Aims</h2>
+    <div v-if="intents" class="intents-container">
+    	<div v-for="intent in intents" :key="intent.id" class="intent">
+    		<div class="intent-inner">
+    			<span>{{intent.name}}</span>
+    			<span>{{intent.cost}}</span>
+    			<span>{{intent.done}}</span>
+    		</div>
+    	</div>
     </div>
   </section>
 </template>
@@ -24,28 +31,20 @@ export default {
       return this.$store.getters['intents/list']
     }
   },
+  async fetch({ store, $axios }) {
+    store.commit('intents/emptyList')
+    const response = await $axios.get('/intents')
+    response.data.intents.forEach(intent => {
+    
+      console.log(response.data.intents)
+      store.commit('intents/add', {
+        id: intent.id || intent._id,
+        ...intent
+      })
+    })
+  },
   methods: {
-	  async fetch({ store }) {
-	    store.commit('intents/emptyList')
-	    const response = await axios('get', '/intents', {
-	      
-	    })
-	    response.data.intents.forEach(intent => {
-	      if (intent.image) {
-	      intent.image.url = `${apiUrl}${intent.image.url}`
-	    }
-	    else {
-	      intent.image = {
-	        url: `${apiUrl}/static/placeholder.jpg`
-	      }
-	    }
-	      // console.log(intent)
-	      store.commit('intents/add', {
-	        id: intent.id || intent._id,
-	        ...intent
-	      })
-	    })
-	  }
+	  
   }
 }
 </script>
