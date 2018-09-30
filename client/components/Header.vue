@@ -56,8 +56,8 @@ export default {
   },
   mounted() {
     let createdUser = moment(this.userAll.createdAt);
-    let updatedUser = moment(this.userAll.updatedAt);
-    let daysFromCreated = updatedUser.diff(createdUser, 'days');
+    let todayDate = moment(moment().format());
+    let daysFromCreated = todayDate.diff(createdUser, 'days');
     let today = parseInt(moment().format('D'));
     let dayCost = this.user.monthCost / 30;
     if (today >= daysFromCreated) {

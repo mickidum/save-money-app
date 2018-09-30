@@ -53,7 +53,7 @@ html, body {
   color: white;
   border-radius: 4px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  margin-top: 20px;
+  // margin-top: 20px;
 }
 
 .button-success {
@@ -350,10 +350,17 @@ footer.bottom-bar {
 .waste-page {
 	position: relative;
 	min-height: 100vh;
-	// display: flex;
-  // justify-content: center;
-	// align-items: center;
-	padding-top: 140px;
+	display: flex;
+  justify-content: center;
+	align-items: center;
+	h1 {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: 0;
+		text-decoration: underline;
+	}
+	// padding-top: 140px;
 	form {
 		text-align: center;
 	}
@@ -384,3 +391,26 @@ footer.bottom-bar {
 	}
 }
 
+.last-wasted-button {
+  left: 14px;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+	align-items: center;
+	background-color: #03a9f4;
+	border: solid 6px #03a9f4;
+	span {
+		display: block;
+		font-size: 28px;
+		margin-top: 10px;
+	}
+	strong {
+		display: block;
+		font-size: 10px;
+		position: absolute;
+    top: 12px;
+    left: 0;
+    width: 100%;
+	}
+}

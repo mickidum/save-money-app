@@ -1,5 +1,6 @@
 <template>
   <div class="waste-page">
+    <h1 class="text-center">Waste Page</h1>
     <nuxt-link tag="span" class="close-button" to="/" exact></nuxt-link>
     <div class="forms-wasted">
       <form autocomplete="off" @submit.stop.prevent="updateWaste" class="pure-form1 pure-form-stacked1">
