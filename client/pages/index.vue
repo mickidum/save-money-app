@@ -2,15 +2,50 @@
   <section>
     <div>
       <h1>Home page</h1>
-      <!-- <p>
-      	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit expedita quo tempore tempora error harum a repellendus dignissimos officiis velit ex enim, quaerat sit voluptatem dicta ducimus, veniam, recusandae sed totam, iure itaque odio eum non quasi! Voluptatum dolores eveniet ratione fuga sunt doloremque quo accusantium doloribus est tenetur incidunt nemo dicta nulla nam nihil consequuntur neque, ex debitis. Perferendis, eos ut quibusdam, deleniti harum rem doloremque consectetur debitis doloribus, fugit, saepe maxime fuga. Delectus labore nostrum tempore? Dolorem saepe placeat temporibus! Animi dolorem corporis in sint, iure cumque eveniet, numquam sequi, aut repellat officia impedit, dolor consequatur! Incidunt repellendus eligendi explicabo minima impedit totam quibusdam numquam autem, ab alias recusandae et ad veritatis! Iure ducimus odio officia id fuga. Minima, praesentium iste, voluptatem odio laudantium quo, maiores doloremque quisquam asperiores debitis voluptatum quibusdam. Quisquam id ut atque fugit numquam voluptas, cum porro, quos repudiandae laboriosam sequi, error sunt delectus. Nemo a est officiis quis cum culpa, iusto amet tempore suscipit tempora obcaecati, ea deleniti ex voluptate quo vel mollitia perferendis reprehenderit placeat nihil aspernatur sequi. Quia voluptas a nostrum sed ducimus corporis, omnis fugiat pariatur velit quidem sequi voluptatum. Accusantium molestiae consectetur laboriosam. Quae voluptatem facere at a quis repellat repellendus illum molestias! Harum accusantium eligendi cupiditate dolores, eaque accusamus est sed voluptatum, facilis laudantium voluptas, aliquid porro? Assumenda dolor, accusantium voluptas veritatis itaque deserunt omnis quibusdam sint! Quaerat quis possimus sapiente minus aut cum ea beatae, dicta eos voluptates non neque rerum odit dolor illo modi, error quidem voluptate quisquam, eaque incidunt. Nesciunt minus cupiditate laboriosam aperiam debitis fugit quas aspernatur dolorum in asperiores. Suscipit praesentium itaque expedita earum autem quia, reiciendis est vitae nisi voluptatibus dolorem modi voluptates asperiores tempore esse? Laborum veniam esse, commodi asperiores at officiis, unde, quos quisquam perferendis eaque voluptate adipisci. Dicta harum velit enim! Quos a cum illum, ipsa illo officiis voluptatem natus ipsam possimus perferendis id vitae itaque, sequi minima delectus dolor at adipisci quod consequatur similique velit praesentium ad, expedita quo fuga! Quod consequatur minus fugit iste voluptatem repudiandae sed repellat. Suscipit quis sapiente blanditiis autem accusantium mollitia! Ipsa est, in sint fugit, nobis dolores obcaecati commodi! Porro laborum quidem placeat quam sapiente ullam temporibus officia quis totam, eos. Repellendus minus, beatae. Laborum ipsa quis error tempora. Alias fuga optio ratione iste molestias doloremque perferendis quisquam adipisci, excepturi corporis quod nesciunt repudiandae facilis distinctio dolorum explicabo. Officiis doloribus cum tempore laudantium, laboriosam. Velit eius aperiam alias perspiciatis vero quibusdam, voluptates, suscipit dicta, unde ut dolorem natus ratione aliquam nulla repudiandae! Placeat, quas. Voluptas consectetur facere, quasi necessitatibus aliquid quaerat et vero magnam eaque placeat quia officiis fugiat error libero nulla unde dicta vel ipsum quos repellat incidunt, quo porro dolore saepe adipisci. Magni recusandae tempora minima aperiam aut unde cupiditate hic cum voluptatibus quod nostrum maxime, accusamus corporis dolores pariatur ut quasi fugiat sed. Tenetur possimus non delectus quidem sed, recusandae natus magni nihil dolores praesentium exercitationem temporibus eligendi, eaque a! Nemo, tempore, ipsa error recusandae ad vel blanditiis omnis assumenda labore veniam quo suscipit delectus fugiat fuga tenetur deserunt beatae sapiente adipisci. Nam blanditiis magnam vitae molestiae quam, ea quaerat voluptates delectus facilis dolor cumque, recusandae iste adipisci neque rerum. Cupiditate assumenda non vitae alias veritatis praesentium eaque, odit similique voluptatum minus labore, sed quas atque accusantium inventore. Unde, enim nulla ab! Obcaecati repellendus pariatur quis, quisquam architecto voluptatum quasi labore magnam qui deserunt, fugit, eveniet officiis voluptate veritatis veniam ipsum sunt. Corporis harum minus itaque exercitationem, velit temporibus deleniti autem mollitia placeat ab cumque quasi, ea beatae voluptates, atque hic dolorum laboriosam asperiores, unde eligendi illum! Delectus impedit nemo a maiores quisquam voluptatum alias iusto, adipisci, architecto cupiditate rem corporis odio perferendis in aut maxime. Quos excepturi quibusdam qui, doloribus, aut debitis omnis quasi beatae expedita esse corporis ipsa cupiditate dolore pariatur tenetur error asperiores aperiam voluptatibus, deleniti molestiae earum? Possimus error maxime ducimus, sit alias odio iure! Sunt iste, quae, aut laboriosam possimus alias dolore voluptas tenetur enim! Aut modi perspiciatis nostrum unde, reiciendis! Velit, temporibus iusto incidunt tenetur, vel eligendi officia dolorum iure perspiciatis esse possimus vitae voluptas placeat molestias, itaque non quo animi minima veritatis veniam error. Autem porro laborum accusantium, rerum distinctio eos sed. Laudantium ad debitis, ratione totam est, animi, non eligendi facere illum voluptates reprehenderit. Sequi nam possimus expedita asperiores, inventore esse dolores hic illum dicta incidunt similique ipsum pariatur, iure aliquam ullam enim. Quaerat, adipisci, hic. Iure sequi voluptatibus tenetur officiis corporis ipsum velit odio unde, consequatur expedita, possimus ex? Asperiores necessitatibus odio corporis eligendi nisi natus aliquid fugiat aperiam obcaecati magnam veniam, aut, tempora veritatis expedita maiores illum quia molestias, facere amet cupiditate quasi explicabo fugit earum. Rem officia ea facere laudantium deleniti delectus ipsum neque voluptatem sed! Et ipsa labore quas, molestias similique, at, officiis libero rem voluptatem laudantium omnis praesentium incidunt error accusantium blanditiis. Exercitationem nobis ratione enim unde facere maxime dolorum veniam tempore, eveniet praesentium, repellendus vitae quas sequi possimus, velit, architecto libero ad sint quis. Consequuntur, aut, eius. Iste velit illum est, nesciunt itaque sequi, minus doloremque ut expedita, culpa amet! Facilis, est? Cum recusandae hic provident rem, laboriosam voluptate ratione totam rerum itaque dignissimos suscipit, distinctio, temporibus. Repellendus nulla omnis, amet quisquam soluta aliquam quidem voluptatum veritatis, cumque porro fuga corporis eligendi. Alias aliquam beatae, aperiam impedit, reprehenderit quis dolorum fugit ex in a ducimus dolores quo mollitia qui ab odit nisi laboriosam sint, dolorem iusto distinctio? Vitae ad maiores, accusamus, deserunt assumenda, id eos esse iure est voluptatem, tenetur neque. Velit ipsum iure, veritatis tempore exercitationem fuga natus facere asperiores reprehenderit nesciunt praesentium eligendi eveniet voluptate quis in molestias aliquid aspernatur autem quo? Esse delectus odio, ullam reprehenderit quasi amet repellat iste provident laudantium consequuntur accusamus, placeat voluptatem laborum quisquam cupiditate, quae sunt culpa obcaecati ipsam ex voluptatum! Doloribus autem odio quibusdam maxime corporis libero veniam tempore quisquam perferendis veritatis id suscipit quaerat sint accusantium tempora cumque consequatur beatae fuga, error laudantium architecto porro, fugit? In magnam a nobis neque amet, laudantium veniam nesciunt!
-      </p> -->
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  layout: 'homepage'
+  layout: 'homepage',
+  data() {
+  	return {
+  		error: null
+  	}
+  },
+  computed: {
+    filteredList() {
+      return this.intents.filter(intents => {
+        return intent.name.toLowerCase().includes(this.query.toLowerCase())
+      })
+    },
+    intents() {
+      return this.$store.getters['intents/list']
+    }
+  },
+  methods: {
+	  async fetch({ store }) {
+	    store.commit('intents/emptyList')
+	    const response = await axios('get', '/intents', {
+	      
+	    })
+	    response.data.intents.forEach(intent => {
+	      if (intent.image) {
+	      intent.image.url = `${apiUrl}${intent.image.url}`
+	    }
+	    else {
+	      intent.image = {
+	        url: `${apiUrl}/static/placeholder.jpg`
+	      }
+	    }
+	      // console.log(intent)
+	      store.commit('intents/add', {
+	        id: intent.id || intent._id,
+	        ...intent
+	      })
+	    })
+	  }
+  }
 }
 </script>
