@@ -16,7 +16,8 @@
     "@nuxtjs/auth": "^4.5.2",
     "@nuxtjs/axios": "^5.3.1",
     "moment": "^2.22.2",
-    "nuxt": "^1.0.0"
+    "nuxt": "^1.0.0",
+    "vue2-filters": "^0.3.0"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",

@@ -76,6 +76,9 @@ export default {
       error: null
     }
   },
+  mounted() {
+    this.$store.commit('intents/emptyList');
+  },
   methods: {
     async handleSubmit() {
       try {
@@ -87,7 +90,7 @@ export default {
           }
         })
         this.loading = false;
-        this.$router.push('/');
+        this.$router.push('/login');
       } 
       catch (e) {
         this.loading = false

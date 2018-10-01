@@ -44,7 +44,8 @@ import moment from 'moment';
 export default {
   data() {
     return {
-      monthSaved: null
+      monthSaved: 0,
+      lastMonth: 0
     }
   },
   computed: {
@@ -59,16 +60,26 @@ export default {
     let todayDate = moment(moment().format());
     let daysFromCreated = todayDate.diff(createdUser, 'days');
     let today = parseInt(moment().format('D'));
+    let daysInMonth = parseInt(todayDate.daysInMonth());
     let dayCost = this.user.monthCost / 30;
-    if (today >= daysFromCreated) {
+    let sameMonthCreated = todayDate.isSame(createdUser, 'month');
+    let sameMonth = todayDate.isSame(moment(this.user.lastMonthWasted.date), 'month');
+    // console.log(sameMonthCreated)
+    // daysFromCreated = 60
+    if (daysFromCreated < daysInMonth && sameMonthCreated) {
+      // console.log('sanemonth 1')
       this.monthSaved = (dayCost * daysFromCreated - this.user.lastMonthWasted.how).toFixed();
       if (this.monthSaved < 0) {
         this.monthSaved = 0;
       }
-    }else {
-      this.monthSaved = (dayCost * today - this.user.lastMonthWasted.how).toFixed();
     }
-    
+    else {
+      // console.log('sanemonth 2')
+      this.monthSaved = (dayCost * today - this.user.lastMonthWasted.how).toFixed();
+      if (this.monthSaved < 0) {
+        this.monthSaved = 0;
+      }
+    }
   }
 }
 </script>

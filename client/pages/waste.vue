@@ -64,7 +64,7 @@ export default {
       }
       
         let obj = {
-          lastWasted: this.wasted - 0,
+          lastWasted: parseInt(this.wasted),
           totalWasted: parseInt(this.user.totalWasted) + parseInt(this.wasted),
           lastMonthWasted: this.lastMonth()
         }

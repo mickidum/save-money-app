@@ -132,7 +132,6 @@ export default {
         try {
           this.loading = true
           await this.$auth.logout();
-          this.$router.push('/login')
         } catch (err) {
           this.loading = false
           alert(err.message || 'An error occurred.')

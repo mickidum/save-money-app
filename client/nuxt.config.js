@@ -24,6 +24,9 @@ module.exports = {
   axios: {
     baseURL: 'http://127.0.0.1:3001/v1'
   },
+  plugins: [
+    '~/plugins/vue2-filters'
+  ],
   css: [
     '@/assets/css/pure-min.css',
     '@/assets/css/main.scss'
