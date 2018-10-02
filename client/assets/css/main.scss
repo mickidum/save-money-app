@@ -575,3 +575,13 @@ footer.bottom-bar {
   padding: 5px 20px;
   font-size: 30px;
 }
+.forms-intent-edit {
+	.intent-edit-buttons {
+		display: flex;
+		justify-content: space-between;
+		.eb {
+			margin: 0;
+			max-width: 48%;
+		}
+	}
+}
