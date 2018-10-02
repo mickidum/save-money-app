@@ -40,10 +40,10 @@
 <script>
 import { mapGetters } from 'vuex';
 import moment from 'moment';
+import totalSavedValue from '~/helpers/totalSavedValue';
 export default {
 	data(){
 		return {
-			totalSaved: null,
 			error: null
 		}
 	},
@@ -55,22 +55,25 @@ export default {
       logged: 'isAuthenticated', 
 			user: 'userSettings',
 			userAll: 'loggedInUser'
-      })
+      }),
+    totalSaved() {
+    	return totalSavedValue(this.userAll);
+    }
   },
   mounted() {
-    let createdUser = moment(this.userAll.createdAt);
-    let todayDate = moment(moment().format());
-    let daysFromCreated = todayDate.diff(createdUser, 'days');
+   //  let createdUser = moment(this.userAll.createdAt);
+   //  let todayDate = moment(moment().format());
+   //  let daysFromCreated = todayDate.diff(createdUser, 'days');
 
-    let dayCost = this.user.monthCost / 30;
-    if (daysFromCreated > 0) {
-			this.totalSaved = (dayCost * daysFromCreated).toFixed() - this.user.totalWasted;
-			if (this.totalSaved < 0) {
-				this.totalSaved = 0;
-			}
-    }else {
-      this.totalSaved = 0
-    }
+   //  let dayCost = this.user.monthCost / 30;
+   //  if (daysFromCreated > 0) {
+			// this.totalSaved = (dayCost * daysFromCreated).toFixed() - this.user.totalWasted;
+			// if (this.totalSaved < 0) {
+			// 	this.totalSaved = 0;
+			// }
+   //  }else {
+   //    this.totalSaved = 0
+   //  }
   },
   methods: {
   	async cancelLast() {

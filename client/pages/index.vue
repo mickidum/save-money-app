@@ -2,7 +2,11 @@
   <section>
     <div class="subheader">
       <h1>Aims</h1>
-      <span @click="filterDone">{{chname}} reached aims</span>
+      <div class="right-filters">
+      	<span style="border-bottom: solid 2px #2196f3;" ref="all" @click="filterDone('all')">All</span>
+      	<span ref="reached" @click="filterDone('reached')">Reached</span>
+      	<span ref="notreached" @click="filterDone('notreached')">Not reached</span>
+      </div>
     </div>
     <div v-if="filteredList" class="intents-container">
     	<div v-for="intent in filteredList" :key="intent.id" class="intent">
@@ -28,28 +32,27 @@ export default {
   data() {
   	return {
       error: null,
-      hide: true
+      filteredAction: 'all',
   	}
   },
   computed: {
-    chname() {
-      if (this.hide) {
-        return 'Hide';
-      }else {
-        return 'Show';
-      }
-    },
     filteredList() {
-      return this.intents.filter(intent => {
-        if(this.hide) {
-          return intent;
-        }else {
-          return intent.done == false
-        }
-      })
+      if(this.filteredAction === 'all') {
+        return this.intents;
+      }else if (this.filteredAction === 'reached') {
+        return this.intentsDone;
+      }else {
+      	return this.intentsNotDone;
+      }
     },
     intents() {
       return this.$store.getters['intents/list']
+    },
+    intentsDone() {
+    	return this.$store.getters['intents/listDone']
+    },
+    intentsNotDone() {
+    	return this.$store.getters['intents/listNotDone']
     }
   },
   async fetch({ store, $axios }) {
@@ -60,8 +63,12 @@ export default {
     })
   },
   methods: {
-	  filterDone() {
-      this.hide = !this.hide;
+	  filterDone(action) {
+      this.filteredAction = action;
+      for(let item in this.$refs) {
+      	this.$refs[item].style.borderBottom = 'none';
+      }
+      this.$refs[action].style.borderBottom = 'solid 2px #2196f3';
     }
   }
 }

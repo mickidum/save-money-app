@@ -465,6 +465,7 @@ footer.bottom-bar {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: center;
 	margin: 15px 0;
 	h1 {
 		line-height: 1;
@@ -472,8 +473,14 @@ footer.bottom-bar {
 	}
 	span {
 		cursor: pointer;
-		text-decoration: underline;
+		text-decoration: none;
 		color: #2196f3;
+		margin: 0 5px;
+		display: inline-block;
+		line-height: 1;
+		&.active {
+			background-color: red;
+		}
 	}
 }
 
@@ -487,7 +494,7 @@ footer.bottom-bar {
 		position: absolute;
 		right: 60px;
 		top: 12px;
-		line-height: 1;
+		line-height: 1.1;
 		font-size: 11px;
 		transform: rotate(45deg);
 		color: #000;
@@ -508,7 +515,7 @@ footer.bottom-bar {
 	.intent-done.done {
 		position: relative;
 		padding: 20px;
-		background-color: #d2691e;
+		background-color: #8bc34a;
 		* {color: #fff !important};
 		&::after {
 			content: "DONE";
@@ -519,7 +526,6 @@ footer.bottom-bar {
 			font-size: 45px;
 			font-weight: bold;
 			font-family: serif;
-			// transform-origin: 100% 0;
 			top: 44px;
 			right: 5px;
 			border-bottom: solid 3px #000;

@@ -31,12 +31,7 @@ export default {
     ...mapGetters({
       logged: 'isAuthenticated', 
       user: 'userSettings'
-    })
-  },
-  mounted() {
-    this.$refs.wasteid.focus();
-  },
-  methods: {
+    }),
     lastMonth(){
       let currentDate = moment().format();
       let lastMonthWastedDate = this.user.lastMonthWasted.date;
@@ -53,6 +48,11 @@ export default {
         }
       }
     },
+  },
+  mounted() {
+    this.$refs.wasteid.focus();
+  },
+  methods: {
     changeWaste() {
       if (this.wasted >= 1000) {
         this.wasted = 1000;
@@ -66,7 +66,7 @@ export default {
         let obj = {
           lastWasted: parseInt(this.wasted),
           totalWasted: parseInt(this.user.totalWasted) + parseInt(this.wasted),
-          lastMonthWasted: this.lastMonth()
+          lastMonthWasted: this.lastMonth
         }
         try {
           this.loading = true;

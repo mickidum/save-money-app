@@ -40,46 +40,17 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import moment from 'moment';
+import monthSavedValue from '~/helpers/monthSavedValue';
 export default {
-  data() {
-    return {
-      monthSaved: 0,
-      lastMonth: 0
-    }
-  },
   computed: {
     ...mapGetters({
       logged: 'isAuthenticated', 
       user: 'userSettings',
       userAll: 'loggedInUser'
-      })
-  },
-  mounted() {
-    let createdUser = moment(this.userAll.createdAt);
-    let todayDate = moment(moment().format());
-    let daysFromCreated = todayDate.diff(createdUser, 'days');
-    let today = parseInt(moment().format('D'));
-    let daysInMonth = parseInt(todayDate.daysInMonth());
-    let dayCost = this.user.monthCost / 30;
-    let sameMonthCreated = todayDate.isSame(createdUser, 'month');
-    let sameMonth = todayDate.isSame(moment(this.user.lastMonthWasted.date), 'month');
-    // console.log(sameMonthCreated)
-    // daysFromCreated = 60
-    if (daysFromCreated < daysInMonth && sameMonthCreated) {
-      // console.log('sanemonth 1')
-      this.monthSaved = (dayCost * daysFromCreated - this.user.lastMonthWasted.how).toFixed();
-      if (this.monthSaved < 0) {
-        this.monthSaved = 0;
+      }),
+      monthSaved() {
+        return monthSavedValue(this.userAll)
       }
-    }
-    else {
-      // console.log('sanemonth 2')
-      this.monthSaved = (dayCost * today - this.user.lastMonthWasted.how).toFixed();
-      if (this.monthSaved < 0) {
-        this.monthSaved = 0;
-      }
-    }
   }
 }
 </script>

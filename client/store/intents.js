@@ -14,5 +14,15 @@ export const mutations = {
 export const getters = {
   list: state => {
     return state.list
+  },
+  listDone: state => {
+    return state.list.filter(intent => {
+      return intent.done == true;
+    })
+  },
+  listNotDone: state => {
+    return state.list.filter(intent => {
+      return intent.done == false;
+    })
   }
 }
