@@ -347,6 +347,7 @@ footer.bottom-bar {
 	}
 }
 
+
 .waste-page {
 	position: relative;
 	min-height: 100vh;
@@ -358,7 +359,7 @@ footer.bottom-bar {
 		width: 100%;
 		left: 0;
 		top: 0;
-		text-decoration: underline;
+		// text-decoration: underline;
 	}
 	// padding-top: 140px;
 	form {
@@ -583,5 +584,13 @@ footer.bottom-bar {
 			margin: 0;
 			max-width: 48%;
 		}
+	}
+}
+
+.new-intent-create {
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button { 
+		-webkit-appearance: none; 
+		margin: 0; 
 	}
 }

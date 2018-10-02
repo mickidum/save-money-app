@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div v-if="filteredList.length" class="subheader">
+    <div class="subheader">
       <h1>Aims</h1>
       <div class="right-filters">
       	<span style="border-bottom: solid 2px #2196f3;" ref="all" @click="filterDone('all')">All</span>

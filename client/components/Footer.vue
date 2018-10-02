@@ -27,7 +27,7 @@
 	    </div>
 			<div class="fl-wrap">
      	 	<div v-if="showbutton" @click="cancelLast" v-show="user.lastWasted > 0" class="waste-button last-wasted-button"><strong>Cancel Last Wasted</strong><span>{{user.lastWasted}}</span></div>
-				<nuxt-link tag="a" v-if="showbutton" class="waste-button create-intent" to="/" exact>AIM</nuxt-link>
+				<nuxt-link tag="a" v-if="showbutton" class="waste-button create-intent" to="/newintent" exact>AIM</nuxt-link>
 				<nuxt-link tag="a" v-if="showbutton" class="waste-button" to="waste" exact>WASTE</nuxt-link>
 			</div>
 		</div>

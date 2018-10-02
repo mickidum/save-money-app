@@ -9,11 +9,11 @@
       <form @submit.stop.prevent="editIntent" class="pure-form pure-form-stacked">
         <p>
           <label for="intent-name">Aim Name</label>
-          <input v-model="intent.name" id="intent-name" type="text" placeholder="Enter your email" autofocus>
+          <input v-model="intent.name" id="intent-name" type="text" placeholder="Enter Name" autofocus>
         </p>
         <p>
           <label for="intent-cost">Cost</label>
-          <input v-model="intent.cost" id="intent-cost" type="number" placeholder="Enter your password">
+          <input v-model="intent.cost" id="intent-cost" type="number" placeholder="Enter Cost">
         </p>
     
         <div class="intent-edit-buttons">
