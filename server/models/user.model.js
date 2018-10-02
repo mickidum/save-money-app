@@ -64,7 +64,7 @@ let UserSchema = mongoose.Schema({
         monthCost: {type: String, required: true, validate: validateMonthCost},
         lastWasted: {type: String, default: '0', validate: validateCost},
         totalWasted: {type: String, default: '0', validate: validateCost},
-        totalSaved: {type: String, default: '0', validate: validateCost},
+        aimsReached: {type: String, default: '0', validate: validateCost},
         lastMonthWasted: { 
             date: { type: Date, default: Date.now },
             how: {type: String, default: '0', validate: validateCost},

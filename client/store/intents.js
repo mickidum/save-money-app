@@ -24,5 +24,13 @@ export const getters = {
     return state.list.filter(intent => {
       return intent.done == false;
     })
+  },
+  aimsReached: state => {
+    return state.list.filter(intent => {
+      return intent.done == true;
+    }).reduce(
+      (accumulator, item) => accumulator + item.cost,
+      0
+    )
   }
 }

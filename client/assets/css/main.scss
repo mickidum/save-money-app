@@ -554,3 +554,24 @@ footer.bottom-bar {
 		width: 100%;
 	}
 }
+
+.ready-aim {
+	position: absolute;
+  right: 55px;
+  font-size: 10px;
+  top: 10px;
+  background-color: #FFEB3B;
+  padding: 4px 6px;
+  color: #000;
+  z-index: 20;
+}
+.ready-aim-single {
+	display: inline-block;
+	z-index: 20;
+  position: absolute;
+  right: 0px;
+  top: 38px;
+  background: yellow;
+  padding: 5px 20px;
+  font-size: 30px;
+}
