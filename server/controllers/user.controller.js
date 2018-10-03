@@ -52,10 +52,10 @@ const update = async function(req, res){
     let err, user, data
     user = req.user;
     data = req.body;
-    if(data.role === 'admin') {
-        if(data.password && data.password !== 'adminpass') {
-            ReE(res, 'You are not allowed to create an admin account.')
-        }
+    // console.log('User Role', user.role);
+    // console.log('Update Role', data.role);
+    if(data.role) {
+        ReE(res, 'You are not allowed to update this :) !');
     }
     user.set(data);
 

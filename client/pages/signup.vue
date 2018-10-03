@@ -1,7 +1,7 @@
 <template>
   <section class="container">
     <div class="forms">
-      <h1 class="text-center">Smoke and Save</h1>
+      <h1 class="text-center">Save App Registration</h1>
       <form autocomplete="off" @submit.stop.prevent="register" class="pure-form pure-form-stacked">
         <fieldset>
           <span v-if="error" class="pure-form-message">Error message: {{error}}</span>

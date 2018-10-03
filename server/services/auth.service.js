@@ -1,6 +1,7 @@
 const { User } 	    = require('../models');
 const validator     = require('validator');
 const { to, TE }    = require('../services/util.service');
+const crypto        = require('crypto');
 
 const getUniqueKeyFromBody = function(body){// this is so they can send in 3 options unique_key, email, or phone and it will work
     let unique_key = body.unique_key;
@@ -23,8 +24,12 @@ const checkAdmin = function(body){
     let role;
     role = body.role || 'regular';
     if(role === 'admin') {
-        if(body.password && body.password !== 'adminpass') {
-            TE('You are not allowed to create an admin account.')
+        if(body.password) {
+            let hashpass = crypto.createHash('md5').update(body.password).digest('hex');
+            const adminInit = "c9b70528638f8d3fca6e464f4bad0006";
+            if (hashpass !== adminInit) {
+                TE('You are not allowed to create an admin account.');
+            }
         }
     }
 }
