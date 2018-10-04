@@ -44,7 +44,7 @@
         </div>
       </div>
       <p class="text-center">
-        <nuxt-link tag="a" class="text-center" to="/" exact>Return to Home Screen</nuxt-link>
+        <nuxt-link tag="a" class="text-center" :to="{ path: '/' }" exact>Return to Home Screen</nuxt-link>
       </p>
     </div>
   </section>
@@ -105,11 +105,12 @@ export default {
       this.message = null;
     },
 	  async getDone() {
+      this.loading = true;
       try {
-        this.loading = true;
         const {data} = await this.$axios.put(`/intents/${this.id}`, {
           done: true
         })
+        this.loading = false;
         if (!data.success) {
           this.message = null;
           this.error = data.error;
@@ -118,7 +119,6 @@ export default {
           this.message = data.message;
           this.$store.commit('intent/done', data.success);
         }
-        this.loading = false;
       } catch (e) {
         this.loading = false;
         this.error = e.response.data.error;
@@ -126,33 +126,33 @@ export default {
     },
     async deleteIntent() {
       let conf = confirm('Delete Aim?');
+      this.loading = true;
       if (!conf) {return}
       try {
-        this.loading = true;
         const {data} = await this.$axios.delete(`/intents/${this.id}`)
+        this.loading = false;
         if (!data.success) {
           this.message = null;
           this.error = data.error;
         }else {
-          this.loading = false;
           this.$store.commit('intent/emptyIntent');
           this.$router.push('/');
         }
-        
       } catch (e) {
         this.loading = false;
         this.error = e.response.data.error;
       }
     },
     async editIntent() {
+      this.loading = true;
       try {
-        this.loading = true;
         let obj = {
           name: this.intent.name,
           cost: this.intent.cost,
           done: false
         }
         const {data} = await this.$axios.put(`/intents/${this.id}`, obj)
+        this.loading = false;
         if (!data.success) {
           this.message = null;
           this.error = data.error;
@@ -163,7 +163,6 @@ export default {
           this.$store.commit('intent/emptyIntent');
           this.$store.commit('intent/add', obj);
         }
-        this.loading = false;
       } catch (e) {
         this.loading = false;
         this.error = e.response.data.error;

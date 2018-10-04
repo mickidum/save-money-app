@@ -70,7 +70,6 @@ export default {
     		}
 	    });
 	    return red;
-     // return this.$store.getters['intents/list']
     },
     intentsDone() {
     	return this.$store.getters['intents/listDone']

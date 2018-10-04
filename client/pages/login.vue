@@ -46,8 +46,8 @@ export default {
   },
   methods: {
     async handleSubmit() {
+      this.loading = true;
       try {
-        this.loading = true
         await this.$auth.loginWith('local', {
           data: {
             email: this.email,

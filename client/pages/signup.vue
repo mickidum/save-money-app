@@ -51,8 +51,8 @@ export default {
   },
   methods: {
     async register() {
+      this.loading = true;
         try {
-          this.loading = true;
           await this.$axios.post('/users', {
             email: this.email,
             password: this.password,

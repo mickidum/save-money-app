@@ -41,7 +41,8 @@ import totalSavedValue from '~/helpers/totalSavedValue';
 export default {
 	data(){
 		return {
-			error: null
+			error: null,
+      todayDate: moment(moment().format()) 
 		}
 	},
 	props: {
@@ -55,13 +56,19 @@ export default {
       reached: 'intents/aimsReached'
       }),
     totalSaved() {
-    	return totalSavedValue(this.userAll);
+    	return totalSavedValue(this.userAll, this.todayDate);
     }
+  },
+  mounted() {
+    setInterval(() => {
+      this.todayDate = moment(moment().format());
+    }, 18000000);
   },
   methods: {
   	async cancelLast() {
   		let conf = confirm('Delete Last Waste?');
   		if (!conf) {return}
+      this.loading = true;
   		let month;
   		if (this.user.lastMonthWasted.how <= 0) {
         month = 0;
@@ -78,21 +85,15 @@ export default {
         }
       }
       try {
-        this.loading = true;
-        await this.$axios.put('/users', 
-          {
-            settings: obj
-          }
-          ).then((res) => {
-          if (!res.data.success) {
-            this.error = res.data.error;
-          }else {
-            this.error = null;
-            // this.$auth.fetchUser();
-            this.$store.commit('add', obj)
-          }
-        })
+        const { data } = await this.$axios.put('/users', { settings: obj });
         this.loading = false;
+        if (!data.success) {
+          this.error = data.error;
+        }else {
+          this.error = null;
+          this.$store.commit('add', obj)
+        }
+        
       } catch (e) {
         this.loading = false;
         this.error = e.response.data.error;

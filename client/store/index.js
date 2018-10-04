@@ -1,10 +1,3 @@
-// export const actions = {
-//   nuxtServerInit({ commit }, { req }) {
-//     commit('intents/emptyList')
-//   }
-// }
-
-
 export const getters = {
   isAuthenticated(state) {
     return state.auth.loggedIn

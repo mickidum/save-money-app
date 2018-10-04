@@ -40,8 +40,15 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import moment from 'moment';
 import monthSavedValue from '~/helpers/monthSavedValue';
+
 export default {
+  data() {
+    return {
+      todayDate: moment(moment().format()) 
+    }
+  },
   computed: {
     ...mapGetters({
       logged: 'isAuthenticated', 
@@ -49,8 +56,13 @@ export default {
       userAll: 'loggedInUser'
       }),
       monthSaved() {
-        return monthSavedValue(this.userAll)
+        return monthSavedValue(this.userAll, this.todayDate)
       }
+  },
+  mounted() {
+    setInterval(() => {
+      this.todayDate = moment(moment().format());
+    }, 18000000);
   }
 }
 </script>

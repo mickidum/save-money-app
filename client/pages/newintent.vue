@@ -2,7 +2,7 @@
    <section class="new-intent-create">
       
       <h1 class="text-center">New Aim</h1>
-      <nuxt-link tag="span" class="close-button" to="/" exact></nuxt-link>
+      <nuxt-link tag="span" class="close-button" :to="{ path: '/' }" exact></nuxt-link>
    
     <div class="forms-intent-edit forms">
         <span v-if="error" class="pure-form-message">Error message: {{error}}</span>
@@ -19,7 +19,7 @@
     
         <div class="intent-edit-buttons">
           <button :disabled="loading" type="submit" class="eb submit-button pure-button pure-button-primary button-primary">Create Aim</button>
-          <nuxt-link to="/" tag="button" class="eb submit-button pure-button pure-button-danger button-error">Cancel</nuxt-link>
+          <nuxt-link :to="{ path: '/' }" tag="button" class="eb submit-button pure-button pure-button-danger button-error">Cancel</nuxt-link>
         </div>
       </form>
     </div>
@@ -51,24 +51,21 @@ export default {
       }
     },
     async createIntent() {
+      this.loading = true;
       let obj = {
         name: this.name,
         cost: this.cost,
         done: false
       }
       try {
-        this.loading = true;
         const {data} = await this.$axios.post('/intents', obj);
-
+        this.loading = false;
         if (!data.success) {
-          this.loading = false;
           this.error = data.error;
         }else {
-          
           this.error = null;
           this.$router.push('/');
         }
-        
       } catch (e) {
         this.loading = false;
         this.error = e.response.data.error;

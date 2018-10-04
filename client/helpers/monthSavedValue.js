@@ -1,9 +1,9 @@
 import moment from 'moment';
 
-const monthSavedValue = function( { createdAt, settings } ) {
+const monthSavedValue = function( { createdAt, settings }, todayDateOut ) {
 	let monthSaved;
 	let createdUser = moment(createdAt);
-  let todayDate = moment(moment().format());
+  let todayDate = todayDateOut || moment(moment().format());
   let daysFromCreated = todayDate.diff(createdUser, 'days');
   let today = parseInt(moment().format('D'));
   let daysInMonth = parseInt(todayDate.daysInMonth());

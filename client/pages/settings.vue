@@ -1,6 +1,6 @@
 <template>
   <div class="settings-page">
-    <nuxt-link tag="span" class="close-button" to="/" exact></nuxt-link>
+    <nuxt-link tag="span" class="close-button" :to="{ path: '/' }" exact></nuxt-link>
     <div class="forms settings">
       <h1>All Settings</h1>
       <form autocomplete="off" @submit.stop.prevent="update" class="pure-form pure-form-stacked">
@@ -28,7 +28,7 @@
             <button :disabled="loading" type="submit" class="submit-button pure-button pure-button-primary button-primary">Update</button>
           </p>
           <p class="text-center">
-          <nuxt-link tag="a" class="text-center" to="/" exact>Return to Home Screen</nuxt-link>
+          <nuxt-link tag="a" class="text-center" :to="{ path: '/' }" exact>Return to Home Screen</nuxt-link>
         </p>
         </fieldset>
       </form>
@@ -78,65 +78,64 @@ export default {
       return this.passnew = !this.passnew;
     },
     async update() {
-
-        this.passnew = false;
-        this.button = 'Change';
-        if (this.password) {
-          var obj = {
-            email: this.email,
-            password: this.password,
-            name: this.firstname || 'john doe',
-            settings: {
-              monthCost: this.monthcost
-            }
-          }
-        }else {
-          var obj = {
-            email: this.email,
-            name: this.firstname || 'john doe',
-            settings: {
-              monthCost: this.monthcost
-            }
+      this.loading = true;
+      this.passnew = false;
+      this.button = 'Change';
+      if (this.password) {
+        var obj = {
+          email: this.email,
+          password: this.password,
+          name: this.firstname || 'john doe',
+          settings: {
+            monthCost: this.monthcost
           }
         }
-        try {
-          this.loading = true;
-          await this.$axios.put('/users', obj).then((res) => {
-            if (!res.data.success) {
-              this.message = null;
-              this.error = res.data.error;
-            }else {
-              this.passnew = true;
-              this.error = null;
-              this.message = res.data.message;
-              if (this.password || this.email !== this.user.email) {
-                setTimeout(() => {
-                  this.message = 'Redirecting to login';
-                }, 1000);
-                setTimeout(() => {
-                  this.$auth.logout();
-                }, 2000);
-              }
-              else {
-                this.$auth.fetchUser();
-              }
-            }
-          })
-          this.loading = false;
-        } catch (e) {
-          this.loading = false;
-          this.error = e.response.data.error;
-        }
-      },
-      async logoutHandler() {
-        try {
-          this.loading = true
-          await this.$auth.logout();
-        } catch (err) {
-          this.loading = false
-          alert(err.message || 'An error occurred.')
+      }else {
+        var obj = {
+          email: this.email,
+          name: this.firstname || 'john doe',
+          settings: {
+            monthCost: this.monthcost
+          }
         }
       }
-    } 
+      try {
+        const { data } = await this.$axios.put('/users', obj)
+        this.loading = false;
+          if (!data.success) {
+            this.message = null;
+            this.error = data.error;
+          }else {
+            this.passnew = true;
+            this.error = null;
+            this.message = data.message;
+            if (this.password || this.email !== this.user.email) {
+              setTimeout(() => {
+                this.message = 'Redirecting to login';
+              }, 1000);
+              setTimeout(() => {
+                this.$auth.logout();
+              }, 2000);
+            }
+            else {
+              this.$auth.fetchUser();
+            }
+          }
+      } catch (e) {
+        this.loading = false;
+        this.error = e.response.data.error;
+      }
+    },
+    async logoutHandler() {
+      this.loading = true
+      try {
+        await this.$auth.logout();
+        this.loading = false
+      } catch (err) {
+        this.loading = false
+        alert(err.message || 'An error occurred.')
+      }
+    }
+  } 
 }
 </script>
