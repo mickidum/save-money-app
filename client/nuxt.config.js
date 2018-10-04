@@ -2,6 +2,8 @@ module.exports = {
   /*
   ** Headers of the page
   https://server-joyjhhzylx.now.sh 'now URL'
+  https://polar-basin-51538.herokuapp.com 'heroku'
+
   */
   head: {
     title: 'Smoke and Save',
@@ -14,6 +16,7 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  mode: 'spa',
   modules: [
     // 'bootstrap-vue/nuxt',
     '@nuxtjs/axios',

@@ -23,7 +23,8 @@ if(CONFIG.db_host != ''){
     mongoose.connect(mongo_location,
     {
       useCreateIndex: true,
-      useNewUrlParser: true
+      useNewUrlParser: true,
+      // dbName: 'saveappdb'
     }).catch((err)=>{
         console.log('*** Can Not Connect to Mongo Server:', mongo_location)
     })
