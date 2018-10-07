@@ -6,22 +6,26 @@ module.exports = {
 
   */
   head: {
-    title: 'Smoke and Save',
+    title: 'Save App',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Save App' }
+      { hid: 'description', name: 'description', content: 'Save App' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  manifest: {
+    "short_name": "SaveApp",
+    "name": "Save Money App",
+    "display": "standalone",
+  },
   mode: 'spa',
   modules: [
-    // 'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
     '@nuxtjs/auth',
-    ['@nuxtjs/pwa', { icon: false }],
+    '@nuxtjs/pwa'
   ],
   router: {
     middleware: ['auth']
@@ -31,7 +35,7 @@ module.exports = {
     baseURL: 'https://polar-basin-51538.herokuapp.com/v1'
   },
   plugins: [
-    '~/plugins/vue2-filters'
+    '~/plugins/vue2-filters',
   ],
   css: [
     '@/assets/css/pure-min.css',
@@ -43,7 +47,7 @@ module.exports = {
         endpoints: {
           // login: { url: 'http://localhost:3001/v1/users/login', method: 'post', propertyName: 'token' },
           login: { url: 'https://polar-basin-51538.herokuapp.com/v1/users/login', method: 'post', propertyName: 'token' },
-          logout: { url: '/', method: 'get' },
+          logout: false,
           // user: { url: 'http://localhost:3001/v1/users', method: 'get', propertyName: 'user' }
           user: { url: 'https://polar-basin-51538.herokuapp.com/v1/users', method: 'get', propertyName: 'user' }
         },

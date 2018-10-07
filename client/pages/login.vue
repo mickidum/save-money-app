@@ -55,7 +55,7 @@ export default {
           }
         })
         this.loading = false;
-        this.$router.push('/login');
+        // this.$router.push('/');
       } 
       catch (e) {
         this.loading = false

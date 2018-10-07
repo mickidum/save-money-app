@@ -25,7 +25,7 @@
 
     <div v-if="!edit" class="intent-block">
       <div :class="{ done: intent.done }" class="intent-done">
-        <span v-if="intent.ready && !intent.done" class="ready-aim-single">READY</span>
+        <span v-if="!intent.done"><span v-if="intent.ready" class="ready-aim-single"><span>READY</span></span></span>
         <h3><span>Aim: </span>{{intent.name | truncate(15)}}</h3>
         <div class="cost">{{intent.cost}}</div>
       </div>
@@ -38,13 +38,13 @@
           <div v-if="!intent.done" class="pure-u-1-3">
             <button @click="editIn" class="button-secondary pure-button">Edit</button>
           </div>
-          <div v-if="!intent.done && intent.ready" class="pure-u-1-3">
-            <button @click="getDone" class="button-success pure-button">Done</button>
+          <div v-if="!intent.done" class="pure-u-1-3">
+            <button v-if="intent.ready" @click="getDone" class="button-success pure-button">Done</button>
           </div>
         </div>
       </div>
       <p class="text-center">
-        <nuxt-link tag="a" class="text-center" :to="{ path: '/' }" exact>Return to Home Screen</nuxt-link>
+        <nuxt-link tag="a" class="text-center" to="/" exact>Return to Home Screen</nuxt-link>
       </p>
     </div>
   </section>
@@ -71,15 +71,15 @@ export default {
     intent() {
       if (!this.initIntent) {return false}
       let r = this.totalSaved - this.aimsReached - this.initIntent.cost;
-      if (r >= 0) {
+      if (r < 0) {
         return {
         ...this.initIntent,
-        ready: true
+        ready: false
         }
       } else {
         return {
         ...this.initIntent,
-        ready: false
+        ready: true
         }
       }
     },
@@ -92,7 +92,7 @@ export default {
   },
   async fetch({ store, $axios, params }) {
     store.commit('intent/emptyIntent');
-    const {data} = await $axios.get(`/intents/${params.id}`)
+    const {data} = await $axios.get(`/intents/${params.id}`);
     store.commit('intent/add', data.intent);
   },
   methods: {
@@ -114,6 +114,7 @@ export default {
         if (!data.success) {
           this.message = null;
           this.error = data.error;
+
         }else {
           this.error = null;
           this.message = data.message;

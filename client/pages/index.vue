@@ -11,7 +11,7 @@
     <div v-if="filteredList.length" class="intents-container">
     	<div v-for="intent in filteredList" :key="intent.id" class="intent">
     		<nuxt-link :class="{ homedone: intent.done }" class="intent-inner" tag="div" :to="{ name: 'intents-id', params: { id: intent.id }}">
-          <span v-if="intent.ready && !intent.done" class="ready-aim">READY</span>
+          <i v-if="!intent.done"><span v-if="intent.ready" class="ready-aim">READY</span></i>
           <table>
             <tbody>
               <tr>

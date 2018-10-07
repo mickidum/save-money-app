@@ -5,7 +5,7 @@ const totalSavedValue = function( { createdAt, settings }, todayDateOut ) {
 	let createdUser = moment(createdAt);
   let todayDate = todayDateOut || moment(moment().format());
   let daysFromCreated = todayDate.diff(createdUser, 'days');
-  let dayCost = settings.monthCost / daysFromCreated;
+  let dayCost = settings.monthCost / 30;
   if (daysFromCreated > 0) {
     totalSaved = (dayCost * daysFromCreated).toFixed() - settings.totalWasted;
     if (totalSaved < 0) {
