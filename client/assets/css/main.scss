@@ -369,6 +369,7 @@ footer.bottom-bar {
 	input[type=number]::-webkit-outer-spin-button { 
 		-webkit-appearance: none; 
 		margin: 0; 
+		-moz-appearance: textfield;
 	}
 	.waste-error {
 		display: inline-block;

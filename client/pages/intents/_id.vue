@@ -103,6 +103,7 @@ export default {
       this.edit = true;
       this.error = null;
       this.message = null;
+      this.loading = false;
     },
 	  async getDone() {
       this.loading = true;
