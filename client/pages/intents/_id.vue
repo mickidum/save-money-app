@@ -61,6 +61,17 @@ export default {
       edit: false
     }
   },
+  async beforeRouteEnter (to, from, next) {
+    next(vm => {
+      if (!vm.intent) {
+        vm.$store.commit('intent/emptyIntent');
+        vm.$axios.get(`/intents/${vm.$route.params.id}`)
+        .then(response => {
+          vm.$store.commit('intent/add', response.data.intent);
+        });
+      }
+    })
+  },
   computed: {
     id() {
       return this.$route.params.id
