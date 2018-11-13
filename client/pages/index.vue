@@ -1,6 +1,8 @@
 <template>
   <section>
+    <div v-if="freeMoney" class="free-money"><span>Free Money: </span> <span>{{freeMoney}}</span></div>
     <div class="subheader">
+
       <h1>Aims</h1>
       <div class="right-filters">
       	<span style="border-bottom: solid 2px #2196f3;" ref="all" @click="filterDone('all')">All</span>
@@ -76,14 +78,26 @@ export default {
     },
     aimsReached() {
     	return this.$store.getters['intents/aimsReached']
+    },
+    freeMoney() {
+      let free = this.totalSaved - this.aimsReached;
+      if (free > 0) {
+        return free;
+      } else {
+        return 0;
+      }
     }
   },
   async fetch({ store, $axios }) {
     store.commit('intents/emptyList');
-    const {data} = await $axios.get('/intents');
-    data.intents.forEach(intent => {
-      store.commit('intents/add', intent);
-    })
+    try {
+      const {data} = await $axios.get('/intents');
+      data.intents.forEach(intent => {
+        store.commit('intents/add', intent);
+      })
+    } catch(err) {
+      this.error = err.data.error
+    }
   },
   methods: {
 	  filterDone(action) {

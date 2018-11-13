@@ -55,7 +55,7 @@ export default {
           }
         })
         this.loading = false;
-        // this.$router.push('/');
+        // this.$router.replace('/');
       } 
       catch (e) {
         this.loading = false

@@ -468,7 +468,7 @@ footer.bottom-bar {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	margin: 15px 0;
+	margin: 5px 0 15px 0;
 	h1 {
 		line-height: 1;
 		margin: 0;
@@ -594,4 +594,16 @@ footer.bottom-bar {
 		-webkit-appearance: none; 
 		margin: 0; 
 	}
+}
+
+.free-money {
+	position: relative;
+	font-size: 20px;
+	span:last-child {
+		font-weight: bold;
+		color: green;
+	}
+}
+i {
+	font-style: normal;
 }

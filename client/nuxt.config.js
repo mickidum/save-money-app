@@ -44,6 +44,11 @@ module.exports = {
     '@/assets/css/pure-min.css',
     '@/assets/css/main.scss'
   ],
+  redirect: {
+    home: "/",  //redirection after logged in
+    login: "/login",        //redirection if user is not logged in
+    logout: "/",            //redirection after user has logged out
+  },
   auth: {
     strategies: {
       local: {
