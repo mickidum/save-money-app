@@ -26,6 +26,9 @@
         </fieldset>
       </form>
     </div>
+    <div class="employer">
+      <button @click="employer" class="pure-button button-success">For Lazy Employer</button>
+    </div>
   </section>
 </template>
 
@@ -61,6 +64,10 @@ export default {
         this.loading = false
         this.error = e.response.data.error
       }
+    },
+    employer() {
+      this.email = "demo@test.com";
+      this.password = "demo123";
     }
   },
   

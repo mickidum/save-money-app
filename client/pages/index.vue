@@ -6,8 +6,8 @@
       <h1>Aims</h1>
       <div class="right-filters">
       	<span style="border-bottom: solid 2px #2196f3;" ref="all" @click="filterDone('all')">All</span>
-      	<span ref="reached" @click="filterDone('reached')">Reached</span>
       	<span ref="ready" @click="filterDone('ready')">Ready</span>
+      	<span ref="reached" @click="filterDone('reached')">Reached</span>
       </div>
     </div>
     <div v-if="filteredList.length" class="intents-container">
@@ -46,10 +46,15 @@ export default {
   	},
     filteredList() {
       if(this.filteredAction === 'all') {
-        return this.intents;
-      }else if (this.filteredAction === 'reached') {
+        let rInt = this.intents.filter(intent => {
+          return intent.done == false;
+        });
+        return rInt;
+
+      } else if (this.filteredAction === 'reached') {
         return this.intentsDone;
-      }else if(this.filteredAction === 'ready') {
+
+      } else if(this.filteredAction === 'ready') {
       	let rInt = this.intents.filter(intent => {
       		return intent.done == false && intent.ready == true;
       	});

@@ -55,7 +55,7 @@ module.exports = {
         endpoints: {
           // login: { url: 'http://localhost:3001/v1/users/login', method: 'post', propertyName: 'token' },
           login: { url: 'https://polar-basin-51538.herokuapp.com/v1/users/login', method: 'post', propertyName: 'token' },
-          logout: false,
+          // logout: false,
           // user: { url: 'http://localhost:3001/v1/users', method: 'get', propertyName: 'user' }
           user: { url: 'https://polar-basin-51538.herokuapp.com/v1/users', method: 'get', propertyName: 'user' }
         },
