@@ -34,8 +34,8 @@ module.exports = {
     middleware: ['auth']
   },
   axios: {
-    // baseURL: 'http://127.0.0.1:3001/v1'
-    baseURL: 'https://polar-basin-51538.herokuapp.com/v1'
+    baseURL: 'http://127.0.0.1:3001/v1'
+// baseURL: 'https://polar-basin-51538.herokuapp.com/v1'
   },
   plugins: [
     '~/plugins/vue2-filters',
@@ -53,11 +53,11 @@ module.exports = {
     strategies: {
       local: {
         endpoints: {
-          // login: { url: 'http://localhost:3001/v1/users/login', method: 'post', propertyName: 'token' },
-          login: { url: 'https://polar-basin-51538.herokuapp.com/v1/users/login', method: 'post', propertyName: 'token' },
+          login: { url: 'http://localhost:3001/v1/users/login', method: 'post', propertyName: 'token' },
+          // login: { url: 'https://polar-basin-51538.herokuapp.com/v1/users/login', method: 'post', propertyName: 'token' },
           // logout: false,
-          // user: { url: 'http://localhost:3001/v1/users', method: 'get', propertyName: 'user' }
-          user: { url: 'https://polar-basin-51538.herokuapp.com/v1/users', method: 'get', propertyName: 'user' }
+          user: { url: 'http://localhost:3001/v1/users', method: 'get', propertyName: 'user' }
+          // user: { url: 'https://polar-basin-51538.herokuapp.com/v1/users', method: 'get', propertyName: 'user' }
         },
         // tokenRequired: true,
         tokenType: 'bearer', 
